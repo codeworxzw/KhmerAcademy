@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:background="#FDFDFD"
+android:orientation="vertical">
+<RelativeLayout
+    android:id="@+id/root_frame"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:background="#F6F6F6"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:gravity="center">
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="មតិ"
+            android:textSize="18dp"
+            android:textColor="#61786A"
+            android:textStyle="bold"
+            android:layout_margin="5dp"/>
+    </LinearLayout>
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe_refresh_widget"
+        android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_height="wrap_content" >
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/my_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/reply_comment_layout"
+        android:background="@drawable/layout_border"
+        android:layout_alignParentBottom="true">
+        <EditText
+            android:id="@+id/ed_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8.5"
+            android:inputType="textMultiLine"
+            android:maxLines="3"
+            android:padding="7dp"
+            android:background="@android:color/transparent"
+            android:imeOptions="actionDone"
+            android:hint="មតិរបស់អ្នក" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:gravity="center|bottom"
+            android:layout_gravity="center|bottom"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/imgSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/send"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
+</LinearLayout>

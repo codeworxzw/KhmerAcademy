@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <!--<color name="colorPrimary">#FFE8ECED</color>
+         <color name="colorPrimaryDark">#FFE8ECED</color>
+         <color name="colorAccent">#FF4081</color>-->
+        <color name="text_enabled">#FFFFFFFF</color>
+        <color name="text_disabled">#4DFFFFFF</color>
+
+        <color name="colorPrimary">#ffffff</color>
+        <color name="colorPrimaryDark">#ba000000</color>
+        <color name="colorAccent">#3BB960</color>
+
+        <color name="colorBgDrawer">#f165c89c</color>
+        <color name="textColor">#3BB960</color>
+        <color name="textPwd">#64B5F6</color>
+
+
+
+        <color name="colorBgItem">#09947f</color>
+        <color name="colorBgNumItem">#e207a990</color>
+        <color name="colorNumVideos">#ededed</color>
+        <color name="colorDescrib">#f5f5f5</color>
+        <color name="colorwhite">#ffffff</color>
+        <color name="colorblack">#000000</color>
+        <color name="colorgray">#D6D6D6</color>
+
+        <color name="primary">#4CAF50</color>
+        <color name="primary_dark">#388E3C</color>
+        <color name="videoPlayerItem">#555555</color>
+
+
+</resources>

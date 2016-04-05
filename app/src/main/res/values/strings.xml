@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">Khmer Academy</string>
+
+    <!--AppInrol-->
+    <string name="AppIntro_Eleaning">E-Learning Video</string>
+    <string name="AppIntro_Eleaning_content_1">Khmer Academy គឺជាគេហទំព័រដំបូង ដែលផ្ដល់នូវ E-Learning ជាភាសាខ្មែរ ។ Khmer Academy នឹងផ្ដល់អត្ថប្រយោជន៍ជាច្រើនដល់អ្នក ជាមួយនឹងអត្ថបទមេរៀន ដែលអាចជួយសន្សំពេលវេលា និងថវិកា។ ពួកយើងមាន អត្ថបទ E-Learning ដែលគួរឱ្យចាប់អារម្មណ៍ ជាច្រើនជាភាសាខ្មែរ ដែលអាចនឹងជួយពន្យល់អ្នកយ៉ាងច្បាស់និងងាយស្រួលយល់ ។</string>
+    <string name="AppIntro_Eleaning_content_2">Khmer Academy ផ្ដល់ឱ្យអ្នកនូវការសិក្សាជាមួយ Tutorial ជាច្រើនភាសា Programming ។ អ្នកអាចសិក្សាយ៉ាងងាយស្រួល ជាមួយអត្ថបទបង្រៀនជាភាសាខ្មែរ។ ពួកយើងបានរៀបចំ មេរៀនជាប្រភេទនិមួយៗ ជាមួយនឹងមេរៀន សមញ្ញាៗ និង ឧទាហរណ៍ ដែលងាយស្រួលឱ្យអ្នកកាន់តែងាយស្រួលយល់។ សូមចាប់ផ្ដើមឱកាសការងារ និងអនាគតរបស់អ្នកជាមួយ Khmer Academy ។</string>
+    <string name="AppIntro_Eleaning_content_3">Khmer Academy forum អនុញ្ញាតឱ្យអ្នកទស្សនា អាចពិភាក្សា និងទំនាក់ទំនងជាមួយគ្នា ដោយការសួរនិងឆ្លើយសំណួរ។ Forum របស់យើងគឺបើកទូលាយគ្រប់អត្ថបទ ជាពិសេសអត្ថបទដែលទាក់ទងនឹង IT ។ ជាមួយនឹងការជួយរបស់អ្នក គឺជាផ្នែកមួយដ៏សំខាន់សម្រាប់យើង ហើយពួកយើងនឹងធ្វើការជាមួយគ្នាដើម្បី កសាងគេហទំព័របណ្ដុំសំណួរនិងចម្លើយ ដ៏ធំនៅកម្ពុជា ។</string>
+    <string name="start_learning_today">ការសិក្សា​ចាប់ផ្ដើម​ពី​ថ្ងៃនេះ</string>
+    <string name="khmer_academy">KHMER ACADEMY</string>
+    <string name="first_elearning">First E-Learning In Cambodia</string>
+    <string name="full_name">គោត្តនាម និង​នាម</string>
+    <string name="sign_up">ចុះឈ្មោះ</string>
+    <string name="log_in">ចូល</string>
+    <string name="pass_word">ពាក្យសម្ងាត់</string>
+    <string name="confirm_password">បញ្ជាក់ពាក្យសម្ងាត់</string>
+    <!--<string name="app_name">KHMERACADEMY</string>-->
+    <string name="main_category">MainCategory</string>
+    <string name="user_profile">UserProfile</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="category_title">Category</string>
+    <string name="iso_title">iOS</string>
+    <string name="html_title">HTML</string>
+
+    <!--Profile activity-->
+    <string name="userPrfile_title">User Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="bar_profile">ព័ត៌មានទូទៅ</string>
+    <string name="profile_email">អ៊ីម៉ែល:</string>
+    <string name="profile_gender">ភេទ:</string>
+    <string name="profile_dateofbirth">ថ្ងៃ ខែ ឆ្នាំកំណើត:</string>
+    <string name="profile_department">ដេប៉ាតឺម៉ង់:</string>
+    <string name="profile_unviersity">គ្រឹះស្ថានសិក្សា:</string>
+    <string name="profile_phone_number">លេខទូរស័ព្ទ:</string>
+    <!--close Profile activity-->
+
+    <!--Edit Profile activity-->
+    <string name="edit_name">គោត្តនាម និងនាម</string>
+    <string name="edit_dateOfBirth">ថ្ងៃ ខែ ឆ្នាំកំណើត</string>
+    <string name="edit_email">អ៊ីម៉ែល</string>
+    <string name="edit_school">គ្រឹះស្ថានសិក្សា</string>
+    <string name="edit_department">ដេប៉ាតឺម៉ង់</string>
+    <string name="edit_phone">លេខទូរស័ព្ទ:</string>
+    <string name="edit_logToPwd">ចូលទៅកែប្រែពាក្យសម្ងាត់</string>
+
+    <string name="hint_edit_name">គោត្តនាម និងនាម</string>
+    <string name="hint_edit_dateOfBirth">10 Oct 1995</string>
+    <string name="hint_edit_email">email@gmail.com</string>
+    <string name="hint_edit_department">ដេប៉ាតឺម៉ង់</string>
+    <string name="hint_edit_university">គ្រឹះស្ថានសិក្សា</string>
+    <!--Close Edit Profile activity-->
+
+    <!--Navigation Menu Item-->
+    <string name="navItemHome">ទំព័រដើម</string>
+    <string name="navItemUserProfile">ព័ត៌មានអ្នកប្រើប្រាស់</string>
+    <string name="navItemSetting">ការកែប្រែគណនី</string>
+    <string name="navItemLogout">ចាកចេញ</string>
+    <string name="itemAccount">គណនី</string>
+    <string name="navItemAboutUs">អំពីយើង</string>
+    <!--Close Navigation Menu Item-->
+
+    <!--Edit Password-->
+    <string name="currentPwd">ពាក្យសម្ងាត់បច្ចុប្បន្ន</string>
+    <string name="newPwd">ពាក្យសម្ងាត់ថ្មី</string>
+    <string name="confirmPwd">បញ្ចាក់ពាក្យសម្ងាត់ថ្មី</string>
+    <string name="editPwd_title">Edit Password</string>
+    <!--Close Edit Password-->
+
+    <!-- About Us -->
+    <string name="about_hrd"> Who we are?</string>
+    <string name="address">Address: </string>
+    <string name="address_info">#12, St 323, Sangkat Boeung Kak II, KhanToul Kork, Phnom Penh, Cambodia.</string>
+    <string name="tel">Tel:</string>
+    <string name="tel_info">(855)23 99 13 14,(855)77 77 12 36 (Khmer, English),(855)15 4 5555 2 (Khmer, English),(855)17 52 81 69(Korean, English)</string>
+    <string name="website">Website:</string>
+    <string name="websiteInfo"><a href="http://www.kshrd.com.kh"> www.kshrd.com.kh</a></string>
+    <!-- Close About Us -->
+
+    <!-- Video Player Screen -->
+    <string name="show_comment">បញ្ចេញមតិ</string>
+    <!-- Close Video Player Screen -->
+
+
+    <string name="spinner_title">Select Gender</string>
+    <string name="videoPlayerToolbarTitle">មេរៀន</string>
+    <string name="spinner_university_title">Select University</string>
+    <string name="spinner_department_title">Select Department</string>
+
+    <!--String Email Validator-->
+    <string name="validation_valid_email">Please, enter valid email address</string>
+    <string name="validation_empty">Cannot be empty!</string>
+    <string name="validation_success">Validation succeeded! \nThat was easy, wasn\'t it?</string>
+
+    <!--String comment-->
+    <string name="first_fragment">Fragment 1</string>
+    <string name="second_fragment">Fragment 2</string>
+    <string name="static_fragment">Static fragment</string>
+    <string name="to_second_fragment">Change to second fragment</string>
+    <string name="to_static_fragment">Change to static fragment</string>
+    <string name="internet_problem">បញ្ហាបណ្តាញអ៊ិនធឺណែត</string>
+
+    <!--Facebook connection-->
+    <string name="facebook_app_id">952178931544511</string>
+
+</resources>

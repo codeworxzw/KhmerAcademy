@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:background="#EAEEEF"
+    android:layout_weight="6"
+    android:id="@+id/main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="0dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:fillViewport="true">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="#EAEEEF"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/khmer_academy"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"
+                        android:textColor="#4E9E51"
+                        android:textSize="@dimen/khmer_academy"/>
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/first_elearning"
+                        android:textAllCaps="true"
+                        android:textColor="#BCC2C6"
+                        android:textStyle="bold"
+                        android:inputType="text"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/box_sign_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="4"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="10dp"
+                    android:background="#ffffff">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layout_re_full_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/editReFullName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:paddingBottom="20dp"
+                            android:singleLine="true"
+                            android:paddingLeft="10dp"
+                            android:inputType="text"
+                            android:hint="@string/full_name"
+                            android:textSize="@dimen/text_edit" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <!-- Spinner Dropdown -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:paddingBottom="20dp"
+                        android:singleLine="true"
+                        android:paddingLeft="10dp">
+
+                        <TextView
+                            android:id="@+id/tv_school"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ភេទ"
+                            android:layout_marginTop="15dp"
+                            android:textSize="16sp"/>
+                        <Spinner
+                            android:id="@+id/spinnerGender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:prompt="@string/spinner_title"
+                            android:layout_alignBaseline="@+id/tv_school"
+                            android:layout_marginLeft="50dp"/>
+                    </RelativeLayout>
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layout_re_email_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/editReEmailAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:paddingBottom="20dp"
+                            android:singleLine="true"
+                            android:paddingLeft="10dp"
+                            android:hint="@string/edit_email"
+                            android:textSize="@dimen/text_edit" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layout_re_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/editRePassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:paddingBottom="20dp"
+                            android:singleLine="true"
+                            android:inputType="textPassword"
+                            android:paddingLeft="10dp"
+                            android:hint="@string/pass_word"
+                            android:textSize="@dimen/text_edit" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layout_re_confrim_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/editReConfirmPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:paddingBottom="20dp"
+                            android:singleLine="true"
+                            android:inputType="textPassword"
+                            android:paddingLeft="10dp"
+                            android:hint="@string/confirm_password"
+                            android:textSize="@dimen/text_edit" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+                    <Button
+                        android:id="@+id/btn_sign_up"
+                        android:background="#4FA052"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dp"
+                        android:textAllCaps="true"
+                        android:textSize="18sp"
+                        android:textColor="#ffffff"
+                        android:text="@string/sign_up"/>
+                </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

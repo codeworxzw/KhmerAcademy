@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.khmeracademy">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name="org.khmeracademy.NetworkRequest.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/kaicon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+        <activity
+            android:name="org.khmeracademy.Activity.SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="org.khmeracademy.Activity.UserProfileDetail" android:screenOrientation="portrait"/>
+        <activity android:name="org.khmeracademy.Activity.SubCategory" android:screenOrientation="portrait"/>
+        <activity android:name="org.khmeracademy.Activity.VideoList" android:screenOrientation="portrait"/>
+        <activity
+            android:name="org.khmeracademy.Activity.VideoPlayer"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" android:screenOrientation="portrait"/>
+        <activity android:name="org.khmeracademy.Activity.EditProfile" android:screenOrientation="portrait"/>
+        <activity android:name="org.khmeracademy.AppIntro.AppIntroMain" android:screenOrientation="portrait"/>
+        <activity
+            android:name="org.khmeracademy.Activity.RegisterActivity"
+            android:configChanges="orientation|screenSize" android:screenOrientation="portrait"/>
+        <activity android:name="org.khmeracademy.Activity.MainCategory" android:screenOrientation="portrait"/>
+        <activity android:name="org.khmeracademy.Activity.EditPassword" android:screenOrientation="portrait"/>
+        <activity android:name="org.khmeracademy.Activity.LogInActivity" android:screenOrientation="portrait"/>
+        <activity android:name="org.khmeracademy.Activity.AboutUs" android:screenOrientation="portrait"/>
+        <activity android:name="org.khmeracademy.Activity.ActivitySearchSub" android:screenOrientation="portrait"/>
+        <activity android:name="org.khmeracademy.Activity.MainActivity" android:screenOrientation="portrait"/>
+
+        <provider android:authorities="com.facebook.app.FacebookContentProvider952178931544511"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true" />
+
+    </application>
+
+</manifest>

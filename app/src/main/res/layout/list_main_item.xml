@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/bgImageItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bgrow"/>
+
+    <View
+        android:id="@+id/colorItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.3"
+        android:background="@color/colorBgItem"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true"
+        android:maxLines="1"
+        android:padding="10dp"
+        android:background="@drawable/text_shape"
+        android:text="Web Development"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textSize="15dp" />
+    <TextView
+        android:id="@+id/main_cat_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="some text"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/title"
+        android:layout_marginTop="7dp"
+        android:maxLines="2"
+        android:textAlignment="center"
+        android:lineSpacingExtra="3dp"
+        android:maxWidth="250dp"
+        android:textColor="@color/colorDescrib"/>
+</RelativeLayout>

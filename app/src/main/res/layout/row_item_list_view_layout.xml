@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp" >
+
+    <org.khmeracademy.Adapter.RoundedCornerLayout
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp">
+
+        <View
+            android:id="@+id/vi_num_list_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:background="#ff0000"/>
+
+    </org.khmeracademy.Adapter.RoundedCornerLayout>
+
+    <TextView
+        android:id="@+id/tv_video_list_num"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="1"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:layout_margin="10dp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_video_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Introduction to Android"
+        android:layout_toRightOf="@id/tv_video_list_num"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="#000000"
+        android:padding="5dp"/>
+    <TextView
+        android:id="@+id/tv_video_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_video_title"
+        android:layout_toRightOf="@id/tv_video_list_num"
+        android:textColor="#7b7b7b"
+        android:padding="5sp"
+        android:text="(7:45)"/>
+</RelativeLayout>

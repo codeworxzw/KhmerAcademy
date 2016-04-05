@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/bgImageItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:alpha="0.8"
+        android:src="@drawable/bgrow"/>
+
+
+    <View
+        android:id="@+id/colorItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:background="@color/colorBgItem"/>
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:maxLines="1"
+        android:layout_margin="10dp"
+        android:padding="7dp"
+        android:background="@drawable/text_shape"
+        android:text="HTML"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textSize="15dp" />
+    <TextView
+        android:id="@+id/num_videos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:maxLines="1"
+        android:textSize="12dp"
+        android:layout_centerHorizontal="true"
+        android:text="[20 videos]"
+        android:textColor="@color/colorNumVideos"/>
+
+    <TextView
+        android:id="@+id/describe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/num_videos"
+        android:maxLines="2"
+        android:maxWidth="200dp"
+        android:maxLength="50"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:textSize="14dp"
+        android:layout_centerHorizontal="true"
+        android:text="The language for developing website"
+        android:textColor="@color/colorDescrib"/>
+
+</RelativeLayout>

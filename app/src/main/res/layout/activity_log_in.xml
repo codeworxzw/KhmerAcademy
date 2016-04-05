@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:background="#EAEEEF"
+    android:layout_weight="6"
+    android:id="@+id/main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="0dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:fillViewport="true">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#EAEEEF"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/khmer_academy"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textColor="#4E9E51"
+                    android:textSize="@dimen/khmer_academy"/>
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/first_elearning"
+                    android:textAllCaps="true"
+                    android:textColor="#BCC2C6"
+                    android:textStyle="bold"
+                    android:inputType="text"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="#ffffff">
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/layout_in_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_department">
+
+                <EditText
+                    android:id="@+id/editInEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20dp"
+                    android:singleLine="true"
+                    android:paddingLeft="10dp"
+                    android:hint="@string/edit_email"
+                    android:textSize="@dimen/text_edit"/>
+
+            </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/layout_in_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_department">
+
+                    <EditText
+                        android:id="@+id/editInPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="20dp"
+                        android:singleLine="true"
+                        android:paddingLeft="10dp"
+                        android:inputType="textPassword"
+                        android:hint="@string/pass_word"
+                        android:textSize="@dimen/text_edit" />
+
+                </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <Button
+                android:id="@+id/btn_log_in"
+                android:background="#4FA052"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:textAllCaps="true"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:text="@string/log_in"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:padding="20dp">
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
