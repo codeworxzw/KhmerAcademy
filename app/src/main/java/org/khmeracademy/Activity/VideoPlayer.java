@@ -98,9 +98,6 @@ public class VideoPlayer extends AppCompatActivity implements YoutubePlayBackLis
         // Get Description & View Label
         initView();
 
-        // Call Navigation drawer
-        nvd = new MyNavigationDrawer(this, R.id.nav_view);
-
         //Event Menu Item Back
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -264,17 +261,6 @@ public class VideoPlayer extends AppCompatActivity implements YoutubePlayBackLis
 
             }
         });
-    }
-
-    // Call to refresh navigation header
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-        try {
-            nvd.requestInfoNav();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
     /* Update Like */

@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
 
     <android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -109,7 +100,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ចូលចិត្ត"
+                        android:text="@string/like"
                         android:textColor="@color/textColor"
                         android:textStyle="bold"
                         android:paddingRight="5dp"
@@ -158,7 +149,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ចែករំលែក"
+                        android:text="@string/share"
                         android:id="@+id/txt_share"
                         android:textColor="@color/textColor"
                         android:textStyle="bold"
@@ -171,13 +162,3 @@
 
         </RelativeLayout>
     </android.support.design.widget.CoordinatorLayout>
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer"
-        android:visibility="gone"/>
-</android.support.v4.widget.DrawerLayout>

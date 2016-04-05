@@ -1,6 +1,7 @@
 package org.khmeracademy.Activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,6 +30,7 @@ import org.khmeracademy.NetworkRequest.MyApplication;
 import org.khmeracademy.NetworkRequest.VolleySingleton;
 import org.khmeracademy.NetworkRequest.Youtube;
 import org.khmeracademy.R;
+import org.khmeracademy.Util.ChangeLanguage;
 import org.khmeracademy.Util.CustomDialog;
 import org.khmeracademy.Util.MyNavigationDrawer;
 import org.khmeracademy.Model.ListVideoItem;
@@ -57,6 +59,9 @@ public class VideoList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        new ChangeLanguage(this);
+
         setContentView(R.layout.activity_list_video);
         mTracker = ((MyApplication) getApplication()).getDefaultTracker();
 
@@ -239,5 +244,11 @@ public class VideoList extends AppCompatActivity {
         super.onResume();
         mTracker.setScreenName("Video List");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        this.recreate();
     }
 }

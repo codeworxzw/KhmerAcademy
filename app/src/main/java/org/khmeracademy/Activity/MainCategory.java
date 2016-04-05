@@ -3,6 +3,7 @@ package org.khmeracademy.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
@@ -13,7 +14,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,20 +25,22 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.khmeracademy.Adapter.MainCatRecyclerAdapter;
 import org.khmeracademy.CallBack.RecyclerItemClickListener;
+import org.khmeracademy.Model.MainCategoryItem;
 import org.khmeracademy.NetworkRequest.API;
 import org.khmeracademy.NetworkRequest.GsonObjectRequest;
 import org.khmeracademy.NetworkRequest.MyApplication;
 import org.khmeracademy.NetworkRequest.VolleySingleton;
 import org.khmeracademy.R;
+import org.khmeracademy.Util.ChangeLanguage;
 import org.khmeracademy.Util.CustomDialog;
 import org.khmeracademy.Util.MyNavigationDrawer;
-import org.khmeracademy.Model.MainCategoryItem;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import java.util.ArrayList;
 
 /*public class MainCategory extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {*/
@@ -56,6 +58,9 @@ public class MainCategory extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        new ChangeLanguage(this);
+
         setContentView(R.layout.activity_main);
         mTracker = ((MyApplication) getApplication()).getDefaultTracker();
 
@@ -189,8 +194,7 @@ public class MainCategory extends AppCompatActivity{
 
         // Customize SearchView
         SearchView mSearchView = (SearchView) menuItem.getActionView();
-        mSearchView.setQueryHint("ស្វែងរក Playlist...");
-
+        mSearchView.setQueryHint(getString(R.string.searchSub));
 
         // SearchView is fully expanding in landscape mode
         mSearchView.setMaxWidth(Integer.MAX_VALUE);
@@ -246,4 +250,11 @@ public class MainCategory extends AppCompatActivity{
         mTracker.setScreenName("Category");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        this.recreate();
+    }
+
 }

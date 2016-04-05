@@ -1,14 +1,16 @@
 package org.khmeracademy.Activity;
 
-import android.content.DialogInterface;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.View;
@@ -21,18 +23,24 @@ import com.bluejamesbond.text.style.JustifiedSpan;
 import com.bluejamesbond.text.style.TextAlignment;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import org.khmeracademy.KhmerFont.ArticleBuilder;
-import org.khmeracademy.NetworkRequest.MyApplication;
-import org.khmeracademy.Util.MyNavigationDrawer;
 
 import org.json.JSONException;
+import org.khmeracademy.KhmerFont.ArticleBuilder;
+import org.khmeracademy.NetworkRequest.MyApplication;
+import org.khmeracademy.R;
+import org.khmeracademy.Util.ChangeLanguage;
+import org.khmeracademy.Util.MyNavigationDrawer;
 
-public class AboutUs extends AppCompatActivity implements View.OnClickListener {
+public class AboutUs extends AppCompatActivity {
 
     private TextView textView;
     private Toolbar toolbar;
     private MyNavigationDrawer nvd;
     private Tracker mTracker;
+    private TextView title;
+    private TextView contact;
+    private TextView location;
+
 
     protected int getContentView() {
         return org.khmeracademy.R.layout.acitivity_about_us;
@@ -41,6 +49,10 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Change default to Khmer Language
+        new ChangeLanguage(this);
+
         setContentView(getContentView());
         mTracker = ((MyApplication) getApplication()).getDefaultTracker();
 
@@ -55,6 +67,27 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
         getSupportActionBar().setHomeAsUpIndicator(org.khmeracademy.R.drawable.arrow_back);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //Who are we?
+        title = (TextView) findViewById(R.id.txtWe);
+        SpannableString content = new SpannableString(getText(R.string.about_hrd));
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        content.setSpan(new ForegroundColorSpan(Color.BLUE), 0, content.length(), 0);
+        title.setText(content);
+
+        //Contact us
+        contact = (TextView) findViewById(R.id.contactUs);
+        SpannableString content1 = new SpannableString(getText(R.string.contactUs));
+        content1.setSpan(new UnderlineSpan(), 0, content1.length(), 0);
+        content1.setSpan(new ForegroundColorSpan(Color.BLUE), 0, content1.length(), 0);
+        contact.setText(content1);
+
+        //Location
+        location = (TextView) findViewById(R.id.location);
+        SpannableString content2 = new SpannableString(getText(R.string.location));
+        content2.setSpan(new UnderlineSpan(), 0, content2.length(), 0);
+        content2.setSpan(new ForegroundColorSpan(Color.BLUE), 0, content2.length(), 0);
+        location.setText(content2);
+
         //Event Menu Item Back
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,31 +101,15 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
 
         // Put Text to About us activity
         ArticleBuilder amb = new ArticleBuilder();
-        amb.append(
-                "Khmer Academy គឺ\u200Bជា\u200Bកម្មវិធី\u200B \u200Be-learning\u200B \u200Bដំបូង\u200Bបង្អស់\u200Bសម្រាប់\u200Bចែក\u200Bរំលែក" +
-                        "\u200Bនូវ\u200Bចំនេះ\u200Bដឹង\u200Bនៅ\u200Bក្នុង\u200Bប្រទេស\u200Bកម្ពុជា\u200B។\u200B e-learning\u200B \u200Bមួយ" +
-                        "\u200Bនេះ\u200Bបាន\u200Bបង្កើត\u200Bឡើង\u200Bដោយ\u200Bមជ្ឈមណ្ឌល\u200B\u200Bកូរ៉េ\u200B អេច\u200B\u200B\u200B " +
-                        "\u200Bអ\u200B \u200B\u200Bឌី\u200B \u200Bក្នុង\u200Bឆ្នាំ\u200B \u200B2015។\u200B \u200B រាល់\u200Bមេរៀន\u200Bទាំង" +
-                        "\u200Bអស់\u200Bត្រូវ\u200Bបាន\u200Bបង្រៀន\u200Bជា\u200Bភាសាខ្មែរ\u200B \u200Bដើម្បី\u200Bផ្តល់\u200Bភាព\u200Bងាយ" +
-                        "\u200Bស្រួល\u200Bក្នុង\u200Bការ\u200Bសិក្សា\u200Bស្វែង\u200Bយល់\u200B។\u200B \u200Bមេរៀន\u200Bទាំង\u200Bអស់\u200Bភាគ" +
-                        "\u200Bច្រើន\u200Bផ្តោត\u200B\u200Bសំខាន់\u200B\u200Bទៅ\u200Bលើ\u200B \u200Bមុខ\u200Bវិជ្ជា\u200Bព័ត៍មាន\u200Bវិទ្យ" +
-                        "ា\u200B \u200Bហើយ\u200Bយើង\u200Bមាន\u200B\u200Bគម្រោង\u200Bនិង\u200Bពង្រីក\u200Bនូវ\u200Bមុខ\u200B\u200Bវិជ្ជា\u200B" +
-                        "\u200Bដ៏ទៃ\u200Bទៀត\u200Bឲ្យ\u200Bបាន\u200Bច្រើន\u200B។\u200B \u200Bគោល\u200Bបំណង\u200Bរបស់\u200Bយើង\u200B " +
-                        "\u200Bគឺ\u200Bដើម្បី\u200Bធ្វើ\u200Bឲ្យ\u200Bការ\u200Bអប់\u200Bរំ​ ក្នុង\u200Bប្រទេស\u200Bកម្ពុជា\u200Bកាន់\u200Bតែ\u200Bមាន" +
-                        "\u200Bភាព\u200Bរីក\u200Bចម្រើន\u200B\u200B\u200B \u200Bដោយ\u200Bបច្ចេកទេស\u200Bព័ត៍មាន\u200Bវិទ្យា\u200B។\u200B " +
-                        "\u200BKhmer Academy\u200B \u200Bនិង\u200Bក្លាយ\u200Bជា\u200Bកម្មវិធី\u200Bដ៏\u200Bមាន\u200Bសក្តានុពល\u200B \u200Bដែល" +
-                        "\u200Bប្រមូល\u200B\u200Bនិង\u200B\u200B \u200Bចែក\u200Bចាយ\u200Bរាល់\u200Bចំនេះ\u200Bនៅ\u200Bលើ\u200Bប្រព័ន្ធ\u200Bអ៊ីនធឺណែត" +
-                        "\u200B។\u200B",
+        amb.append(getText(R.string.aboutContext),
                 true, new RelativeSizeSpan(0.8f), new JustifiedSpan(),
                 new StyleSpan(Typeface.NORMAL), new ForegroundColorSpan(0xFF555555));
 
         addDocumentView(amb, DocumentView.FORMATTED_TEXT);
 
         // Call Event alert dialog for text view developerName ID
-        textView = (TextView) findViewById(org.khmeracademy.R.id.developerName);
-        textView.setOnClickListener(this);
-
-
+       /* textView = (TextView) findViewById(org.khmeracademy.R.id.developerName);
+        textView.setOnClickListener(this);*/
     }
 
     // Call to refresh navigation header
@@ -107,32 +124,11 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    // Event alert dialog
-    @Override
-    public void onClick(View v) {
-
-        final CharSequence[] developerName = {
-                "Mr. Phan Pirang", "Mr. Torn Longdy", "Ms. Eath Manith", "Ms. Sa Sokngim"
-        };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Android Developers Team");
-        builder.setItems(developerName, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int item) {
-                // Do something with the selection
-                textView.setText(developerName[item]);
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
-
-    }
-
     public DocumentView addDocumentView(CharSequence article, int type, boolean rtl) {
         final DocumentView documentView = new DocumentView(this, type);
         documentView.getDocumentLayoutParams().setTextColor(0x00000000);
-        documentView.getDocumentLayoutParams().setTextTypeface(Typeface.createFromAsset(getAssets(), "fonts/Battambang-Regular.ttf"));
-        documentView.getDocumentLayoutParams().setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+        /*documentView.getDocumentLayoutParams().setTextTypeface(Typeface.createFromAsset(getAssets(), "fonts/Battambang-Regular.ttf"));*/
+        documentView.getDocumentLayoutParams().setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
         documentView.getDocumentLayoutParams().setTextAlignment(TextAlignment.JUSTIFIED);
         documentView.getDocumentLayoutParams().setHyphenator(SqueezeHyphenator.getInstance());
         documentView.getDocumentLayoutParams().setLineHeightMultiplier(1f);
@@ -173,6 +169,12 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener {
         super.onResume();
         mTracker.setScreenName("About Us");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        this.recreate();
     }
 }
 

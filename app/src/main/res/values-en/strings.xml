@@ -1,0 +1,159 @@
+<resources>
+    <string name="app_name">Khmer Academy</string>
+
+    <!--AppInrol-->
+    <string name="AppIntro_Eleaning">E-Learning Video</string>
+    <string name="AppIntro_Eleaning_content_1">Khmer Academy is the first website which provide E-learning contents in Khmer language. Khmer Academy will provide a lot of advantages to you with the e-learning contents that can make people save their time and money. Also, we have so many interesting e-learning lessons in Khmer which can help in your learning and understandings. </string>
+    <string name="AppIntro_Eleaning_content_2">Khmer Academy has provided many tutorial in Programming. It can make you easier to learn with tutorial lessons in Khmer. Now please start getting your job opportunity and bright future with our Khmer Academy.</string>
+    <string name="AppIntro_Eleaning_content_3">Khmer Academy forum allow users to visit, discuss, and communicate to each other by questioning and answering questions. Our forum is open to all articles, especially IT-related articles. With your help, is an important part for us and we will work together to build a large collection of questions and answers in Cambodia.</string>
+    <string name="start_learning_today">The study started from today</string>
+    <string name="khmer_academy">KHMER ACADEMY</string>
+    <string name="first_elearning">First E-Learning In Cambodia</string>
+    <string name="full_name">Username</string>
+    <string name="sign_up">Register</string>
+    <string name="log_in">Login</string>
+    <string name="pass_word">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <!--<string name="app_name">KHMERACADEMY</string>-->
+    <string name="main_category">MainCategory</string>
+    <string name="user_profile">UserProfile</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="category_title">Category</string>
+    <string name="iso_title">iOS</string>
+    <string name="html_title">HTML</string>
+
+    <!--Profile activity-->
+    <string name="userPrfile_title">User Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="bar_profile">General Information</string>
+    <string name="profile_email">Email:</string>
+    <string name="profile_gender">Gender:</string>
+    <string name="profile_dateofbirth">Date of birth:</string>
+    <string name="profile_department">Department:</string>
+    <string name="profile_unviersity">School:</string>
+    <string name="profile_phone_number">Phone:</string>
+    <!--close Profile activity-->
+
+    <!--Edit Profile activity-->
+    <string name="edit_name">Username</string>
+    <string name="edit_dateOfBirth">Date of Birth</string>
+    <string name="edit_email">Email</string>
+    <string name="edit_school">School</string>
+    <string name="edit_department">Department</string>
+    <string name="edit_phone">Phone:</string>
+    <string name="edit_logToPwd">Change Password</string>
+
+    <string name="hint_edit_name">Username</string>
+    <string name="hint_edit_dateOfBirth">10 Oct 1995</string>
+    <string name="hint_edit_email">email@gmail.com</string>
+    <string name="hint_edit_department">Department</string>
+    <string name="hint_edit_university">School</string>
+    <!--Close Edit Profile activity-->
+
+    <!--Navigation Menu Item-->
+    <string name="navItemHome">Home</string>
+    <string name="navItemUserProfile">User Detail</string>
+    <string name="navItemSetting">Account Editing</string>
+    <string name="navItemLogout">Log out</string>
+    <string name="itemAccount">Account</string>
+    <string name="navItemAboutUs">About Us</string>
+    <string name="navItemLanguage">Language</string>
+    <!--Close Navigation Menu Item-->
+
+    <!--Edit Password-->
+    <string name="currentPwd">Current Password</string>
+    <string name="newPwd">New Password</string>
+    <string name="confirmPwd">Confirm New Password</string>
+    <string name="editPwd_title">Edit Password</string>
+    <!--Close Edit Password-->
+
+    <!-- About Us -->
+    <string name="about_hrd"> WHO ARE WE?</string>
+    <string name="contactUs">CONTACT US</string>
+    <string name="location">OUR LOCATION</string>
+    <string name="address_info1">Address: #12, St 323, Sangkat Boeung Kak II,</string>
+    <string name="address_info2">KhanToul Kork, Phnom Penh, Cambodia.</string>
+    <string name="tel_info">Tel: (855)23 99 13 14,</string>
+    <string name="tel_info1">(855)77 77 12 36 (Khmer, English)</string>
+    <string name="tel_info2">(855)17 52 81 69(Korean, English)</string>
+    <string name="aboutContext">Khmer Academy is the first e-learning platform for knowledge sharing in Cambodia. It is developed by Korea Software HRD Center in 2015. All contents are in Khmer language for easy knowledge acquisition. Most contents are related to IT fields and plan to extend more topics. Our mission is to improve education environments of Cambodia by means of IT technologies. Khmer Academy will be a significant education platform which accumulates and shares all kinds of knowledge.</string>
+
+    <!-- Video Player Screen -->
+    <string name="show_comment">Comment</string>
+    <!-- Close Video Player Screen -->
+
+
+    <string name="spinner_title">Select Gender</string>
+    <string name="videoPlayerToolbarTitle">Lesson</string>
+    <string name="spinner_university_title">Select University</string>
+    <string name="spinner_department_title">Select Department</string>
+
+    <!--String Email Validator-->
+    <string name="validation_valid_email">Please, enter valid email address</string>
+    <string name="validation_empty">Cannot be empty!</string>
+    <string name="validation_success">Validation succeeded! \nThat was easy, wasn\'t it?</string>
+
+    <!--String comment-->
+    <string name="first_fragment">Fragment 1</string>
+    <string name="second_fragment">Fragment 2</string>
+    <string name="static_fragment">Static fragment</string>
+    <string name="to_second_fragment">Change to second fragment</string>
+    <string name="to_static_fragment">Change to static fragment</string>
+    <string name="internet_problem">Internet connection error</string>
+
+    <!--Facebook connection-->
+    <string name="facebook_app_id">952178931544511</string>
+
+    <!--Language Changing-->
+    <string name="language">Language</string>
+
+    <string name="lan_cancel">Cancel</string>
+    <string name="khmer_lan">Khmer (Cambodia)</string>
+    <string name="english_lan">English (EN-US)</string>
+    <string name="nav_setting_lan">Language Setting</string>
+    <string name="chooseLan">Please choose your favorite language!</string>
+
+    <!--Slash Screen-->
+    <string name="slash_screen">Khmer Academy provides the E-learning tutorial with multiple programming languages.</string>
+    <string name="copyright">Copyright © Khmer Academy 2016 </string>
+
+    <!--Spot Dialoag-->
+    <string name="spotDialog">Processing...</string>
+
+    <!--Spinner Drop down-->
+    <string name="spGender">Gender:</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+
+    <!--Reply comments-->
+    <string name="reply_comment">Reply comment</string>
+    <string name="reply">Reply</string>
+    <string name="comment">Comments</string>
+    <string name="yourComment">Your comment</string>
+    <string name="select">Please choose</string>
+    <string name="oldReply">There is no old reply</string>
+    <string name="oldcomment">There is no old comment</string>
+    <string name="nocomment">There is no comment</string>
+    <string name="noReply">There is no replies</string>
+    <string name="successReply">Successfully Reply</string>
+    <string name="failReply">Fail Reply</string>
+
+    <!--Like/Unlike button-->
+    <string name="unlike">Unlike</string>
+    <string name="like">Like</string>
+
+    <!--Share button-->
+    <string name="share">Share</string>
+
+    <!--Search Playlist-->
+    <string name="searchSub">Search Playlist...</string>
+    <string name="noplaylist">There is no playlist.</string>
+
+    <!--Video Playlist-->
+    <string name="noVideoList">There is no video in playlist</string>
+    <string name="dialogshowing">setting_dialog_fragment</string>
+</resources>

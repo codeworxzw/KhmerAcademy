@@ -1,6 +1,7 @@
 package org.khmeracademy.Util;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
@@ -16,6 +17,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.khmeracademy.Activity.AboutUs;
 import org.khmeracademy.Activity.EditProfile;
+import org.khmeracademy.Activity.LanguageDialogFragment;
 import org.khmeracademy.Activity.MainCategory;
 import org.khmeracademy.Activity.RegisterActivity;
 import org.khmeracademy.Activity.UserProfileDetail;
@@ -35,6 +37,9 @@ public class MyNavigationDrawer {
     private TextView email;
     private CircleImageView imageProfile;
     private String className;
+    private FragmentManager mFragmentManager;
+    private LanguageDialogFragment mSettingDialogFragment;
+
 
     public MyNavigationDrawer(final Activity activity, int resId) {
         mActivity = activity;
@@ -112,6 +117,14 @@ public class MyNavigationDrawer {
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         mActivity.startActivity(intent);
                         mActivity.finish();
+                        break;
+
+                    // Handle language action
+                    case R.id.nav_language:
+
+                        mFragmentManager = mActivity.getFragmentManager();
+                        mSettingDialogFragment = new LanguageDialogFragment();
+                        mSettingDialogFragment.show(mFragmentManager, "setting_dialog_fragment");
                         break;
                 }
 

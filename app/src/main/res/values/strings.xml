@@ -61,23 +61,26 @@
     <string name="navItemLogout">ចាកចេញ</string>
     <string name="itemAccount">គណនី</string>
     <string name="navItemAboutUs">អំពីយើង</string>
+    <string name="navItemLanguage">ភាសា</string>
     <!--Close Navigation Menu Item-->
 
     <!--Edit Password-->
     <string name="currentPwd">ពាក្យសម្ងាត់បច្ចុប្បន្ន</string>
     <string name="newPwd">ពាក្យសម្ងាត់ថ្មី</string>
     <string name="confirmPwd">បញ្ចាក់ពាក្យសម្ងាត់ថ្មី</string>
-    <string name="editPwd_title">Edit Password</string>
+    <string name="editPwd_title">កែប្រែពាក្យសម្ងាត់</string>
     <!--Close Edit Password-->
 
     <!-- About Us -->
-    <string name="about_hrd"> Who we are?</string>
-    <string name="address">Address: </string>
-    <string name="address_info">#12, St 323, Sangkat Boeung Kak II, KhanToul Kork, Phnom Penh, Cambodia.</string>
-    <string name="tel">Tel:</string>
-    <string name="tel_info">(855)23 99 13 14,(855)77 77 12 36 (Khmer, English),(855)15 4 5555 2 (Khmer, English),(855)17 52 81 69(Korean, English)</string>
-    <string name="website">Website:</string>
-    <string name="websiteInfo"><a href="http://www.kshrd.com.kh"> www.kshrd.com.kh</a></string>
+    <string name="about_hrd"> WHO ARE WE?</string>
+    <string name="contactUs">CONTACT US</string>
+    <string name="location">OUR LOCATION</string>
+    <string name="address_info1">អាស័យដ្ឋាន: #12, ផ្លូវលេខ​ 323, សង្កាត់ បឹងកក់ II,</string>
+    <string name="address_info2">ខ័ណ្ឌ ទួលគោក, ភ្នំពេញ, កម្ពុជា</string>
+    <string name="tel_info">ទូរស័ព្ទទំនាក់ទំនង: (855)23 99 13 14,</string>
+    <string name="tel_info1">(855)77 77 12 36 (ខ្មែរ, អង់គ្លេស)</string>
+    <string name="tel_info2">(855)17 52 81 69(កូរ៉េ, អង់គ្លេស)</string>
+    <string name="aboutContext">Khmer Academy គឺ​ជា​កម្មវិធី​ ​e-learning​ ​ដំបូង​បង្អស់​សម្រាប់​ចែក​រំលែក \u200Bនូវ\u200Bចំនេះ\u200Bដឹង\u200Bនៅ\u200Bក្នុង\u200Bប្រទេស\u200Bកម្ពុជា\u200B។\u200B e-learning\u200B \u200Bមួយ"\u200Bនេះ\u200Bបាន\u200Bបង្កើត\u200Bឡើង\u200Bដោយ\u200Bមជ្ឈមណ្ឌល\u200B\u200Bកូរ៉េ\u200B សហ្វវែរ\u200B\u200B អេច\u200B\u200B\u200B \u200Bអ\u200B \u200B\u200Bឌី\u200B \u200Bក្នុង\u200Bឆ្នាំ\u200B \u200B2015។\u200B \u200B រាល់\u200Bមេរៀន\u200Bទាំង \u200Bអស់\u200Bត្រូវ\u200Bបាន\u200Bបង្រៀន\u200Bជា\u200Bភាសាខ្មែរ\u200B \u200Bដើម្បី\u200Bផ្តល់\u200Bភាព\u200Bងាយ \u200Bស្រួល\u200Bក្នុង\u200Bការ\u200Bសិក្សា\u200Bស្វែង\u200Bយល់\u200B។\u200B \u200Bមេរៀន\u200Bទាំង\u200Bអស់\u200Bភាគ \u200Bច្រើន\u200Bផ្តោត\u200B\u200Bសំខាន់\u200B\u200Bទៅ\u200Bលើ\u200B \u200Bមុខ\u200Bវិជ្ជា\u200Bព័ត៍មាន\u200Bវិទ្យា\u200B \u200Bហើយ\u200Bយើង\u200Bមាន\u200B\u200Bគម្រោង\u200Bនិង\u200Bពង្រីក\u200Bនូវ\u200Bមុខ\u200B\u200Bវិជ្ជា\u200B​​ \u200Bដទៃ\u200Bទៀត\u200Bឲ្យ\u200Bបាន\u200Bច្រើន\u200B។\u200B \u200Bគោល\u200Bបំណង\u200Bរបស់\u200Bយើង\u200B \u200Bគឺ\u200Bដើម្បី\u200Bធ្វើ\u200Bឲ្យ\u200Bការ\u200Bអប់\u200Bរំ​ ក្នុង\u200Bប្រទេស\u200Bកម្ពុជា\u200Bកាន់\u200Bតែ\u200Bមាន \u200Bភាព\u200Bរីក\u200Bចម្រើន\u200B\u200B\u200B \u200Bដោយ\u200Bបច្ចេកទេស\u200Bព័ត៍មាន\u200Bវិទ្យា\u200B។\u200B \u200BKhmer Academy\u200B \u200Bនិង\u200Bក្លាយ\u200Bជា\u200Bកម្មវិធី\u200Bដ៏\u200Bមាន\u200Bសក្តានុពល\u200B \u200Bដែលប្រមូល\u200B\u200Bនិង\u200B\u200B \u200Bចែក\u200Bចាយ\u200Bរាល់ចំនេះ\u200Bនៅ\u200Bលើ\u200Bប្រព័ន្ធ\u200Bអ៊ីនធឺណែត \u200B។\u200B</string>
     <!-- Close About Us -->
 
     <!-- Video Player Screen -->
@@ -106,4 +109,52 @@
     <!--Facebook connection-->
     <string name="facebook_app_id">952178931544511</string>
 
+    <!--Language Changing-->
+    <string name="language">ភាសា</string>
+    <string name="lan_cancel">បោះបង់</string>
+
+    <string name="khmer_lan">ភាសាខ្មែរ</string>
+    <string name="english_lan">ភាសាអង់គ្លេស</string>
+    <string name="nav_setting_lan">ការកំណត់ភាសា</string>
+    <string name="chooseLan">សូមជ្រើសរើសភាសាដែលអ្នកពេញចិត្ត</string>
+
+    <!--Slash Screen-->
+    <string name="slash_screen">Khmer Academy ផ្តល់​ឲ្យ​អ្នក​នូវ​ការ​សិក្សា​ជាមួយ​ ​Tutorial​ ​ជា​ច្រើន​ភាសា​ ​Programming​។</string>
+    <string name="copyright">រក្សាសិទ្ធិដោយ Khmer Academy ២០១៦</string>
+
+    <!--Spot Dialoag-->
+    <string name="spotDialog">កំពុង​ដំណើរការ...</string>
+    <string name="succeedRegister">ចុះឈ្មោះដោយជោគជ័យ</string>
+
+    <!--Spinner Drop down-->
+    <string name="spGender">ភេទ:</string>
+    <string name="male">ប្រុស</string>
+    <string name="female">ស្រី</string>
+
+    <!--Reply comments-->
+    <string name="reply_comment">មតិឆ្លើយតប</string>
+    <string name="reply">ឆ្លើយតប</string>
+    <string name="comment">មតិ</string>
+    <string name="yourComment">មតិរបស់អ្នក</string>
+    <string name="select">សូមជ្រើសរើស</string>
+    <string name="oldReply">មិនមានការឆ្លើយតបចាស់ៗទេ</string>
+    <string name="oldcomment">មិនមានមតិចាស់ៗទេ</string>
+    <string name="noReply">មិនមានការឆ្លើយតបទេ</string>
+    <string name="nocomment">មិនមានមតិទេ</string>
+    <string name="successReply">ឆ្លើយតបបានសំរេច</string>
+    <string name="failReply">ឆ្លើយតបមិនបានសំរេច</string>
+
+    <!--Like/Unlike button-->
+    <string name="unlike">ឈប់ចូលចិត្ត</string>
+    <string name="like">ចូលចិត្ត</string>
+
+    <!--Share button-->
+    <string name="share">ចែករំលែក</string>
+
+    <!--Search Playlist-->
+    <string name="searchSub">ស្វែងរក Playlist...</string>
+    <string name="noplaylist">មិនមាន Playlist ទេ</string>
+
+    <!--Video Playlist-->
+    <string name="noVideoList">មិនមានវីដេអូទេ</string>
 </resources>

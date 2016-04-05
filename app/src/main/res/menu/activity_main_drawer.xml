@@ -26,9 +26,15 @@
                 android:title="@string/navItemSetting"  />
 
             <item
+                android:id="@+id/nav_language"
+                android:icon="@drawable/ic_language"
+                android:title="@string/navItemLanguage"/>
+
+            <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_exit_to_app"
                 android:title="@string/navItemLogout" />
+
         </menu>
     </item>
 </menu>

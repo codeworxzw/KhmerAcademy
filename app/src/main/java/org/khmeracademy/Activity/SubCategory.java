@@ -1,6 +1,7 @@
 package org.khmeracademy.Activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -152,6 +154,7 @@ public class SubCategory extends AppCompatActivity {
                                     item.setColor(Color.parseColor("#" + jsonArray.getJSONObject(i).getString("color")));
                                 } catch (Exception e) {
                                     e.printStackTrace();
+                                    item.setColor(Color.parseColor("#4CAF50"));
                                 }
                             }
                             item.setSubCategoryID(jsonArray.getJSONObject(i).getString("playlistId"));
@@ -251,5 +254,11 @@ public class SubCategory extends AppCompatActivity {
         super.onResume();
         mTracker.setScreenName("Playlist");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        this.recreate();
     }
 }

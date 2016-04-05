@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:text="@string/nav_setting_lan"/>
+
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp"
+            android:text="@string/chooseLan"/>
+
+        <Button
+            android:id="@+id/btnKh"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/shape_edit_text_style_border"
+            android:text="@string/khmer_lan"/>
+
+        <Button
+            android:id="@+id/btnEn"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/shape_edit_text_style_border"
+            android:text="@string/english_lan"/>
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/shape_edit_text_style_border"
+            android:text="@string/lan_cancel"/>
+
+
+</LinearLayout>

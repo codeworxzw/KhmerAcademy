@@ -186,7 +186,7 @@
                                 android:id="@+id/user_profile_department"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="95dp"
+                                android:layout_marginLeft="110dp"
                                 android:layout_alignBaseline="@id/profile_text_department"
                                 android:textSize="16sp" />
 

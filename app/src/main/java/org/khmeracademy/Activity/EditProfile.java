@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -30,6 +31,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.squareup.picasso.Picasso;
+
 import org.khmeracademy.Adapter.DepartmentSpinnerAdapter;
 import org.khmeracademy.Adapter.UniversitySpinnerAdapter;
 import org.khmeracademy.Model.DepartmentItem;
@@ -40,21 +43,18 @@ import org.khmeracademy.NetworkRequest.MyApplication;
 import org.khmeracademy.NetworkRequest.VolleySingleton;
 import org.khmeracademy.R;
 import org.khmeracademy.Util.BitmapEfficient;
+import org.khmeracademy.Util.ChangeLanguage;
 import org.khmeracademy.Util.CustomDialog;
 import org.khmeracademy.Util.MultipartUtility;
 import org.khmeracademy.Util.MyNavigationDrawer;
-import com.squareup.picasso.Picasso;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -98,6 +98,9 @@ public class EditProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        new ChangeLanguage(this);
+
         setContentView(R.layout.activity_edit_profile);
         mTracker = ((MyApplication) getApplication()).getDefaultTracker();
 
@@ -553,4 +556,11 @@ public class EditProfile extends AppCompatActivity {
         mTracker.setScreenName("Edit Profile");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        this.recreate();
+    }
+
 }

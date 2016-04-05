@@ -1,6 +1,7 @@
 package org.khmeracademy.Activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,14 +16,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.squareup.picasso.Picasso;
+
 import org.khmeracademy.NetworkRequest.API;
 import org.khmeracademy.NetworkRequest.GsonObjectRequest;
 import org.khmeracademy.NetworkRequest.MyApplication;
 import org.khmeracademy.NetworkRequest.VolleySingleton;
+import org.khmeracademy.R;
+import org.khmeracademy.Util.ChangeLanguage;
 import org.khmeracademy.Util.CustomDialog;
 import org.khmeracademy.Util.MyNavigationDrawer;
-import com.squareup.picasso.Picasso;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -44,6 +47,9 @@ public class EditPassword extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        new ChangeLanguage(this);
+
         setContentView(org.khmeracademy.R.layout.activity_edit_password);
         mTracker = ((MyApplication) getApplication()).getDefaultTracker();
 
@@ -207,5 +213,11 @@ public class EditPassword extends AppCompatActivity{
         super.onResume();
         mTracker.setScreenName("Edit Password");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        this.recreate();
     }
 }
