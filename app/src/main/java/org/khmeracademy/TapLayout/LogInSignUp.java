@@ -3,7 +3,6 @@ package org.khmeracademy.TapLayout;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -54,10 +53,10 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
     private EditText edFullName;
 
     @NotEmpty(messageId = org.khmeracademy.R.string.validation_empty)
-    @RegExp(value = EMAIL, messageId = org.khmeracademy.R.string.validation_valid_email)
+    @RegExp(value = EMAIL, messageId = R.string.validation_valid_email)
     private EditText edEmail;
 
-    @NotEmpty(messageId = org.khmeracademy.R.string.validation_empty)
+    @NotEmpty(messageId = R.string.validation_empty)
     private EditText edPassword;
 
     private EditText edComfirmPassword;
@@ -76,10 +75,6 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-    @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstadnceState) {
         // FB Initialize
         FacebookSdk.sdkInitialize(getActivity().getApplicationContext());
@@ -87,14 +82,14 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
 
         View v;
         if(mTitle.equals("Sign Up")){
-            v = inflater.inflate(org.khmeracademy.R.layout.activity_sign_up, container, false);
-            edFullName = (EditText) v.findViewById(org.khmeracademy.R.id.editReFullName);
-            edPassword = (EditText) v.findViewById(org.khmeracademy.R.id.editRePassword);
-            edEmail = (EditText) v.findViewById(org.khmeracademy.R.id.editReEmailAddress);
-            edComfirmPassword = (EditText) v.findViewById(org.khmeracademy.R.id.editReConfirmPassword);
-            spGender = (Spinner) v.findViewById(org.khmeracademy.R.id.spinnerGender);
+            v = inflater.inflate(R.layout.activity_sign_up, container, false);
+            edFullName = (EditText) v.findViewById(R.id.editReFullName);
+            edPassword = (EditText) v.findViewById(R.id.editRePassword);
+            edEmail = (EditText) v.findViewById(R.id.editReEmailAddress);
+            edComfirmPassword = (EditText) v.findViewById(R.id.editReConfirmPassword);
+            spGender = (Spinner) v.findViewById(R.id.spinnerGender);
             // Create an ArrayAdapter using the string array and a default spinner layout
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(v.getContext(), org.khmeracademy.R.array.gender_array, android.R.layout.simple_spinner_item);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(v.getContext(), R.array.gender_array, android.R.layout.simple_spinner_item);
             // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             // Apply the adapter to the spinner
@@ -119,7 +114,7 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
             });
 
 
-            btnSignUp = (Button) v.findViewById(org.khmeracademy.R.id.btn_sign_up);
+            btnSignUp = (Button) v.findViewById(R.id.btn_sign_up);
             btnSignUp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -131,11 +126,12 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
             });
         }
         else{
-            v = inflater.inflate(org.khmeracademy.R.layout.activity_log_in, container, false);
-            btnLogIn = (Button) v.findViewById(org.khmeracademy.R.id.btn_log_in);
-            edEmail = (EditText) v.findViewById(org.khmeracademy.R.id.editInEmail);
-            edPassword = (EditText) v.findViewById(org.khmeracademy.R.id.editInPassword);
+            v = inflater.inflate(R.layout.activity_log_in, container, false);
+            btnLogIn = (Button) v.findViewById(R.id.btn_log_in);
+            edEmail = (EditText) v.findViewById(R.id.editInEmail);
+            edPassword = (EditText) v.findViewById(R.id.editInPassword);
             fbLoginButton = (LoginButton) v.findViewById(R.id.fb_login_button);
+            fbLoginButton.setFragment(this);
             btnLogIn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -148,20 +144,26 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
             fbLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                 @Override
                 public void onSuccess(LoginResult loginResult) {
-                    Log.d("ooooo", "Success");
                     GraphRequest request = GraphRequest.newMeRequest
                             (loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                                 @Override
                                 public void onCompleted(JSONObject object, GraphResponse response) {
                                     try {
-                                        Log.d("ooooo", "Success");
+                                        String id = object.getString("id");
+                                        String name = object.getString("name");
+                                        String email = object.getString("email");
+                                        String gender = object.getString("gender");
+                                        String birthday = object.getString("birthday");
+
                                         JSONObject jsonObjectPicture = object.getJSONObject("picture");
                                         JSONObject jsonObjectData = jsonObjectPicture.getJSONObject("data");
                                         String imageUrl = jsonObjectData.getString("url");
-                                        Intent intent = new Intent(getActivity(), MainCategory.class);
+                                        Log.e("ooooo", id + ", " + name + ", " + email + ", " + gender + ", " + birthday + ", " + imageUrl);
+
+                                        /*Intent intent = new Intent(getActivity(), MainCategory.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         startActivity(intent);
-                                        getActivity().finish();
+                                        getActivity().finish();*/
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -251,7 +253,7 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
             @Override
             public void onErrorResponse(VolleyError error) {
                 pDialog.dismiss();
-                Toast.makeText(getActivity(), org.khmeracademy.R.string.internet_problem, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.internet_problem, Toast.LENGTH_LONG).show();
             }
         });
         // Add request queue
