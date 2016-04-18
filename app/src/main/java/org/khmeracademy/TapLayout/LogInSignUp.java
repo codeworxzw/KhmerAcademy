@@ -3,8 +3,10 @@ package org.khmeracademy.TapLayout;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,15 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
 import org.khmeracademy.Activity.MainCategory;
 import org.khmeracademy.NetworkRequest.API;
 import org.khmeracademy.NetworkRequest.GsonObjectRequest;
@@ -25,6 +36,7 @@ import org.khmeracademy.NetworkRequest.VolleySingleton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.khmeracademy.R;
 
 import dmax.dialog.SpotsDialog;
 import eu.inmite.android.lib.validations.form.FormValidator;
@@ -54,6 +66,8 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
     private Spinner spGender;
     private SharedPreferences.Editor sessionEditor;
     private String gender;
+    private CallbackManager callbackManager;
+    private LoginButton fbLoginButton;
 
     public static LogInSignUp getInstance(String title) {
         LogInSignUp sf = new LogInSignUp();
@@ -67,6 +81,10 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
     }
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstadnceState) {
+        // FB Initialize
+        FacebookSdk.sdkInitialize(getActivity().getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
+
         View v;
         if(mTitle.equals("Sign Up")){
             v = inflater.inflate(org.khmeracademy.R.layout.activity_sign_up, container, false);
@@ -85,12 +103,12 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     //if(spGender.getSelectedItem().equals(""))
-                    if(spGender.getSelectedItemPosition()==0){
+                    if (spGender.getSelectedItemPosition() == 0) {
                         //Toast.makeText(view.getContext(), "Male", Toast.LENGTH_SHORT).show();
                         gender = "Male";
-                    }else {
+                    } else {
                         //Toast.makeText(view.getContext(), "Female", Toast.LENGTH_SHORT).show();
-                        gender="Female";
+                        gender = "Female";
                     }
                 }
 
@@ -117,6 +135,7 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
             btnLogIn = (Button) v.findViewById(org.khmeracademy.R.id.btn_log_in);
             edEmail = (EditText) v.findViewById(org.khmeracademy.R.id.editInEmail);
             edPassword = (EditText) v.findViewById(org.khmeracademy.R.id.editInPassword);
+            fbLoginButton = (LoginButton) v.findViewById(R.id.fb_login_button);
             btnLogIn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -124,6 +143,48 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
                     validateLogin();
                 }
             });
+
+            fbLoginButton.setReadPermissions("email", "public_profile", "user_birthday");
+            fbLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+                @Override
+                public void onSuccess(LoginResult loginResult) {
+                    Log.d("ooooo", "Success");
+                    GraphRequest request = GraphRequest.newMeRequest
+                            (loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                                @Override
+                                public void onCompleted(JSONObject object, GraphResponse response) {
+                                    try {
+                                        Log.d("ooooo", "Success");
+                                        JSONObject jsonObjectPicture = object.getJSONObject("picture");
+                                        JSONObject jsonObjectData = jsonObjectPicture.getJSONObject("data");
+                                        String imageUrl = jsonObjectData.getString("url");
+                                        Intent intent = new Intent(getActivity(), MainCategory.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(intent);
+                                        getActivity().finish();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                    Bundle parameters = new Bundle();
+                    parameters.putString("fields", "id,name,email,gender,birthday,picture.type(large){url}");
+                    request.setParameters(parameters);
+                    request.executeAsync();
+                }
+
+                @Override
+                public void onCancel() {
+                    Log.d("ooooo", "On cancel");
+                }
+
+                @Override
+                public void onError(FacebookException error) {
+                    Log.d("ooooo", error.toString());
+                }
+            });
+
+
         }
         return v;
     }
@@ -229,5 +290,11 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
         });
         // Add request queue
         VolleySingleton.getsInstance().addToRequestQueue(jsonRequest);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }
