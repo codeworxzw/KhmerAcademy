@@ -4,7 +4,7 @@ package org.khmeracademy.NetworkRequest;
  * Created by PC1 on 1/18/2016.
  */
 public class API {
-    public static final String BASE_URL = "http://api.khmeracademy.org";
+    public static final String BASE_URL = "http://1.246.219.166:8080/KAAPI";
     // API URL
     public static final String logInUrl = BASE_URL + "/api/authentication/mobilelogin";
     public static final String signUpUrl = BASE_URL + "/api/user";

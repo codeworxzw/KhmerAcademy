@@ -9,9 +9,12 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -21,7 +24,6 @@ import org.khmeracademy.Activity.LanguageDialogFragment;
 import org.khmeracademy.Activity.MainCategory;
 import org.khmeracademy.Activity.RegisterActivity;
 import org.khmeracademy.Activity.UserProfileDetail;
-import org.khmeracademy.NetworkRequest.API;
 import org.khmeracademy.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -36,19 +38,22 @@ public class MyNavigationDrawer {
     private TextView username;
     private TextView email;
     private CircleImageView imageProfile;
+    private ImageView bgImage;
     private String className;
     private FragmentManager mFragmentManager;
     private LanguageDialogFragment mSettingDialogFragment;
 
 
     public MyNavigationDrawer(final Activity activity, int resId) {
+        FacebookSdk.sdkInitialize(activity);
         mActivity = activity;
         // declare header item navigation view
         NavigationView navigationView = (NavigationView) mActivity.findViewById(resId);
         View header = navigationView.getHeaderView(0);
-        username = (TextView) header.findViewById(org.khmeracademy.R.id.userName);
-        email = (TextView) header.findViewById(org.khmeracademy.R.id.userEmail);
-        imageProfile = (CircleImageView) header.findViewById(org.khmeracademy.R.id.nv_profile_image);
+        username = (TextView) header.findViewById(R.id.userName);
+        email = (TextView) header.findViewById(R.id.userEmail);
+        imageProfile = (CircleImageView) header.findViewById(R.id.nv_profile_image);
+        bgImage = (ImageView) header.findViewById(R.id.bgImageItem);
         className = activity.getClass().getName();
 
         try {
@@ -94,7 +99,7 @@ public class MyNavigationDrawer {
                             Toast.makeText(mActivity, "Now, you are in edit profile!!!", Toast.LENGTH_SHORT).show();
                         } else {
                             intent = new Intent(mActivity, EditProfile.class);
-                            intent.putExtra("userId", "" + userId);
+                            intent.putExtra("userId", "" + mActivity.getSharedPreferences("userSession", 0).getString("id", "N/A"));
                             mActivity.startActivity(intent);
                         }
                         break;
@@ -105,7 +110,7 @@ public class MyNavigationDrawer {
                             Toast.makeText(mActivity, "Now, you are in profile detail !", Toast.LENGTH_SHORT).show();
                         } else {
                             intent = new Intent(mActivity, UserProfileDetail.class);
-                            intent.putExtra("userId", "" + userId);
+                            intent.putExtra("userId", "" + mActivity.getSharedPreferences("userSession", 0).getString("id", "N/A"));
                             mActivity.startActivity(intent);
                         }
                         break;
@@ -113,6 +118,10 @@ public class MyNavigationDrawer {
                     // Handle logout action
                     case R.id.nav_logout:
                         mActivity.getSharedPreferences("userSession", 0).edit().clear().apply();
+                        // Logout Facebook Account
+                        if (LoginManager.getInstance() != null){
+                            LoginManager.getInstance().logOut();
+                        }
                         intent = new Intent(mActivity, RegisterActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         mActivity.startActivity(intent);
@@ -128,7 +137,7 @@ public class MyNavigationDrawer {
                         break;
                 }
 
-                DrawerLayout drawer = (DrawerLayout) mActivity.findViewById(org.khmeracademy.R.id.drawer_layout);
+                DrawerLayout drawer = (DrawerLayout) mActivity.findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             }
@@ -143,9 +152,15 @@ public class MyNavigationDrawer {
 
         username.setText(user_name);
         email.setText(user_email);
+
         Picasso.with(mActivity)
-                .load(API.BASE_URL + "/resources/upload/file/" + profile_image_url)
-                .placeholder(org.khmeracademy.R.drawable.icon_user)
-                .error(org.khmeracademy.R.drawable.icon_user).into(imageProfile);
+                .load(profile_image_url)
+                .placeholder(R.drawable.icon_user)
+                .error(R.drawable.icon_user).into(imageProfile);
+
+        Picasso.with(mActivity)
+                .load(profile_image_url)
+                .placeholder(R.drawable.icon_user)
+                .error(R.drawable.icon_user).into(bgImage);
     }
 }

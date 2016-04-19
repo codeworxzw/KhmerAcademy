@@ -13,7 +13,7 @@
             android:id="@+id/bgImageItem"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.4"
+            android:alpha="0.3"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/bgrow"/>
@@ -22,7 +22,7 @@
             android:id="@+id/colorItem"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.7"
+            android:alpha="0.3"
             android:background="@color/colorBgDrawer"/>
 
         <RelativeLayout

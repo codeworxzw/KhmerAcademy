@@ -43,7 +43,7 @@ public class AboutUs extends AppCompatActivity {
 
 
     protected int getContentView() {
-        return org.khmeracademy.R.layout.acitivity_about_us;
+        return R.layout.acitivity_about_us;
     }
 
     @Override
@@ -57,14 +57,14 @@ public class AboutUs extends AppCompatActivity {
         mTracker = ((MyApplication) getApplication()).getDefaultTracker();
 
         // Call Toolbar
-        toolbar = (Toolbar) findViewById(org.khmeracademy.R.id.toolbar_main);
-        toolbar.setTitle(org.khmeracademy.R.string.navItemAboutUs);
-        toolbar.setTitleTextColor(getResources().getColor(org.khmeracademy.R.color.textColor));
+        toolbar = (Toolbar) findViewById(R.id.toolbar_main);
+        toolbar.setTitle(R.string.navItemAboutUs);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.textColor));
 
         // Change from Navigation menu item image to arrow back image of toolbar
-        toolbar.setNavigationIcon(org.khmeracademy.R.drawable.menu);
+        toolbar.setNavigationIcon(R.drawable.menu);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeAsUpIndicator(org.khmeracademy.R.drawable.arrow_back);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Who are we?
@@ -97,7 +97,7 @@ public class AboutUs extends AppCompatActivity {
         });
 
         // Call Navigation drawer
-        nvd = new MyNavigationDrawer(this, org.khmeracademy.R.id.nav_view);
+        nvd = new MyNavigationDrawer(this, R.id.nav_view);
 
         // Put Text to About us activity
         ArticleBuilder amb = new ArticleBuilder();
@@ -108,7 +108,7 @@ public class AboutUs extends AppCompatActivity {
         addDocumentView(amb, DocumentView.FORMATTED_TEXT);
 
         // Call Event alert dialog for text view developerName ID
-       /* textView = (TextView) findViewById(org.khmeracademy.R.id.developerName);
+       /* textView = (TextView) findViewById(R.id.developerName);
         textView.setOnClickListener(this);*/
     }
 
@@ -116,7 +116,6 @@ public class AboutUs extends AppCompatActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        String id = getIntent().getStringExtra("userId");
         try {
             nvd.requestInfoNav();
         } catch (JSONException e) {
@@ -141,7 +140,7 @@ public class AboutUs extends AppCompatActivity {
                         LinearLayout.LayoutParams.MATCH_PARENT));
         linearLayout.addView(documentView);
 
-        LinearLayout articleList = (LinearLayout) findViewById(org.khmeracademy.R.id.articleList);
+        LinearLayout articleList = (LinearLayout) findViewById(R.id.articleList);
         articleList.addView(linearLayout);
         return documentView;
 
@@ -154,13 +153,13 @@ public class AboutUs extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menu.findItem(org.khmeracademy.R.id.action_search).setVisible(false);
+        menu.findItem(R.id.action_search).setVisible(false);
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(org.khmeracademy.R.menu.activity_main_khmeracademy, menu);
+        getMenuInflater().inflate(R.menu.activity_main_khmeracademy, menu);
         return true;
     }
 

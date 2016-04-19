@@ -149,21 +149,21 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
                                 @Override
                                 public void onCompleted(JSONObject object, GraphResponse response) {
                                     try {
-                                        String id = object.getString("id");
-                                        String name = object.getString("name");
-                                        String email = object.getString("email");
-                                        String gender = object.getString("gender");
-                                        String birthday = object.getString("birthday");
+                                        if (object.has("email")){
+                                            String fbId = object.getString("id");
+                                            String userName = object.getString("name");
+                                            String email = object.getString("email");
+                                            String gender = object.getString("gender");
+                                            String birthday = object.getString("birthday");
 
-                                        JSONObject jsonObjectPicture = object.getJSONObject("picture");
-                                        JSONObject jsonObjectData = jsonObjectPicture.getJSONObject("data");
-                                        String imageUrl = jsonObjectData.getString("url");
-                                        Log.e("ooooo", id + ", " + name + ", " + email + ", " + gender + ", " + birthday + ", " + imageUrl);
-
-                                        /*Intent intent = new Intent(getActivity(), MainCategory.class);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        startActivity(intent);
-                                        getActivity().finish();*/
+                                            JSONObject jsonObjectPicture = object.getJSONObject("picture");
+                                            JSONObject jsonObjectData = jsonObjectPicture.getJSONObject("data");
+                                            String imageUrl = jsonObjectData.getString("url");
+                                            Log.e("ooooo", fbId + ", " + userName + ", " + email + ", " + gender + ", " + birthday + ", " + imageUrl);
+                                            checkFacebookAccount(email, userName, gender, imageUrl, fbId);
+                                        }else{
+                                            Toast.makeText(getActivity(), "Login with FB, E-mail required !", Toast.LENGTH_SHORT).show();
+                                        }
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -229,13 +229,15 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
                 try {
                     // If logIn Successfully
                     if (response.getBoolean("STATUS")){
+                        JSONObject jsonObject = response.getJSONObject("USER");
                         sessionEditor = getActivity().getSharedPreferences("userSession",0).edit();
                         sessionEditor.putBoolean("isLogin", true);
-                        sessionEditor.putString("id", response.getString("USERID"));
-                        sessionEditor.putString("profile_picture", response.getString("PROFILE_IMG_URL"));
-                        sessionEditor.putString("cover_picture", response.getString("COVER_IMG_URL"));
-                        sessionEditor.putString("userName", response.getString("USERNAME"));
-                        sessionEditor.putString("email", response.getString("EMAIL"));
+                        sessionEditor.putString("id", jsonObject.getString("userId"));
+                        sessionEditor.putString("gender", jsonObject.getString("gender"));
+                        sessionEditor.putString("profile_picture", jsonObject.getString("userImageUrl"));
+                        sessionEditor.putString("cover_picture", jsonObject.getString("userImageUrl"));
+                        sessionEditor.putString("userName", jsonObject.getString("username"));
+                        sessionEditor.putString("email", jsonObject.getString("email"));
                         sessionEditor.apply();
                         Intent intent = new Intent(getActivity(), MainCategory.class);
                         startActivity(intent);
@@ -288,6 +290,70 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
             public void onErrorResponse(VolleyError error) {
                 pDialog.dismiss();
                 Toast.makeText(getActivity(), "Please Check Internet Connection !!", Toast.LENGTH_LONG).show();
+            }
+        });
+        // Add request queue
+        VolleySingleton.getsInstance().addToRequestQueue(jsonRequest);
+    }
+
+    private void checkFacebookAccount(final String email, final String userName, String gender, final String imageUrl, String fbId){
+
+        JSONObject param = new JSONObject();
+        try {
+            param.put("email", email);
+            param.put("password", null);
+            param.put("username", userName);
+            param.put("gender", gender);
+            param.put("universityId", null);
+            param.put("departmentId", null);
+            param.put("imageUrl", imageUrl);
+            param.put("scID", fbId);
+            param.put("scType", "2");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        final SpotsDialog pDialog = new SpotsDialog(getActivity(), "កំពុងដំណើរការ");
+        pDialog.show();
+
+        String url = "http://1.246.219.166:8080/KAAPI/api/authentication/login_with_fb";
+        GsonObjectRequest jsonRequest = new GsonObjectRequest(Request.Method.POST, url, param, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                try {
+                    // If logIn Successfully
+                    if (response.getBoolean("STATUS")){
+                        JSONObject jsonObject = response.getJSONObject("USER");
+
+                        // Save user session
+                        sessionEditor = getActivity().getSharedPreferences("userSession",0).edit();
+                        sessionEditor.putBoolean("isLogin", true);
+                        sessionEditor.putString("id", jsonObject.getString("userId"));
+                        sessionEditor.putString("gender", jsonObject.getString("gender"));
+                        sessionEditor.putString("profile_picture", imageUrl);
+                        sessionEditor.putString("cover_picture", imageUrl);
+                        sessionEditor.putString("userName", userName);
+                        sessionEditor.putString("email", email);
+                        sessionEditor.apply();
+
+                        Intent intent = new Intent(getActivity(), MainCategory.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }else{
+                        Toast.makeText(getActivity(), "Invalid email or password!", Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } finally {
+                    pDialog.dismiss();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                pDialog.dismiss();
+                Toast.makeText(getActivity(), R.string.internet_problem, Toast.LENGTH_LONG).show();
             }
         });
         // Add request queue

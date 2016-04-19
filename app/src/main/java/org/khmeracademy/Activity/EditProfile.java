@@ -70,7 +70,6 @@ public class EditProfile extends AppCompatActivity {
     private Calendar calendar;
     private MyNavigationDrawer nvd;
     private CircleImageView imageProfile;
-    private ImageLoader imageLoader;
     private Bitmap bitmap;
     private String imgUrl;
     private String imagePath;
@@ -80,7 +79,6 @@ public class EditProfile extends AppCompatActivity {
     private EditText username;
     private EditText dateOfBirth;
     private EditText phone;
-    private TextView gender;
     private TextView userImageUrl;
     private boolean isChangeProfileImage;
     String user_id;
@@ -186,9 +184,6 @@ public class EditProfile extends AppCompatActivity {
 //        university = (EditText) findViewById(R.id.editSchool);
         phone = (EditText) findViewById(R.id.editPhone);
         userImageUrl = (TextView) findViewById(R.id.user_image_url);
-        gender = (TextView) findViewById(R.id.editGender);
-
-
         selectUniversity = (Spinner) findViewById(R.id.editSchool);
         selectDepartment = (Spinner) findViewById(R.id.editDepartment);
 //        selectUniversity.setBackgroundColor(Color.parseColor("#FF0000"));
@@ -365,7 +360,7 @@ public class EditProfile extends AppCompatActivity {
             params.put("username", username.getText().toString().trim());
             params.put("dateOfBirth", dateOfBirth.getText().toString());
             params.put("userImageUrl", imagePath);
-            params.put("gender", gender.getText().toString());
+            params.put("gender", session.getString("gender", "N/A"));
             params.put("departmentId", departmentId);
             params.put("universityId", universityId);
             params.put("phoneNumber", phone.getText().toString().trim());
@@ -424,7 +419,7 @@ public class EditProfile extends AppCompatActivity {
                         dateOfBirth.setText(object.getString("dateOfBirth"));
                         universityName = object.getString("universityName");
                         departmentName = object.getString("departmentName");
-                        phone.setText(object.getString("phoneNumber"));
+                        phone.setText(object.getString("phoneNumber").equals("null") ? "N/A" : object.getString("phoneNumber"));
                         imagePath = object.getString("userImageUrl");
                         final String imgProfile = API.BASE_URL + "/resources/upload/file/" + imagePath;
                         Picasso.with(getApplicationContext())

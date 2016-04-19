@@ -138,9 +138,9 @@ public class UserProfileDetail extends AppCompatActivity {
                         phone.setText(object.getString("phoneNumber").equals("null") ? "N/A" : object.getString("phoneNumber"));
                         imagePath = object.getString("userImageUrl");
 
-                        String imgProfile = API.BASE_URL + "/resources/upload/file/"+ imagePath;
+                        //String imgProfile = API.BASE_URL + "/resources/upload/file/"+ imagePath;
                         Picasso.with(getApplicationContext())
-                                .load(imgProfile)
+                                .load(imagePath)
                                 .placeholder(R.drawable.icon_user)
                                 .error(R.drawable.icon_user).into(imageProfile);
                     } else {
