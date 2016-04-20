@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 
+import org.khmeracademy.R;
 import org.khmeracademy.TapLayout.LinkButtonToTab;
 import org.khmeracademy.TapLayout.LogInSignUp;
 
@@ -29,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity implements OnTabSelectLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(org.khmeracademy.R.layout.activity_register);
+        setContentView(R.layout.activity_register);
 
         for (String title : mTitles) {
             mFragments.add(LogInSignUp.getInstance(title));
@@ -38,9 +39,9 @@ public class RegisterActivity extends AppCompatActivity implements OnTabSelectLi
         /*View decorView = getWindow().getDecorView();
         ViewPager vp = ViewFindUtils.find(decorView, R.id.vp);*/
 
-        ViewPager vp = (ViewPager) findViewById(org.khmeracademy.R.id.vp);
+        ViewPager vp = (ViewPager) findViewById(R.id.vp);
         vp.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-        tabLayout_2 = (SlidingTabLayout) findViewById(org.khmeracademy.R.id.tl_2);
+        tabLayout_2 = (SlidingTabLayout) findViewById(R.id.tl_2);
 
         tabLayout_2.setViewPager(vp);
         tabLayout_2.setOnTabSelectListener(this);

@@ -48,12 +48,7 @@ public class SubCategory extends AppCompatActivity {
     private ArrayList<SubCategoryItem> mCatList;
 
     private RecyclerView mRecyclerView;
-    private ImageView mBgImageView;
-    private View mColorBackgroundView;
-    private TextView titleTextView, numVideos, describe;
     private Toolbar toolbar;
-    private int position;
-
     private MenuItem menuItem;
     private SearchView mSearchView, searchView;
     private MyNavigationDrawer nvd;
@@ -190,11 +185,6 @@ public class SubCategory extends AppCompatActivity {
 
     private void initViews() {
         mRecyclerView = (RecyclerView) findViewById(R.id.sub_cat_recycler_view);
-        mColorBackgroundView = findViewById(R.id.colorItem);
-        mBgImageView = (ImageView)findViewById(R.id.bgImageItem);
-        titleTextView = (TextView) findViewById(R.id.title);
-        numVideos = (TextView)findViewById(R.id.num_videos);
-        describe = (TextView)findViewById(R.id.describe);
     }
 
     // Disable save menu item

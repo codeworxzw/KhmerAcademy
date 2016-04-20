@@ -73,7 +73,6 @@
 
     <!-- About Us -->
     <string name="about_hrd"> WHO ARE WE?</string>
-    <string name="contactUs">CONTACT US</string>
     <string name="location">OUR LOCATION</string>
     <string name="address_info1">អាស័យដ្ឋាន: #12, ផ្លូវលេខ​ 323, សង្កាត់ បឹងកក់ II,</string>
     <string name="address_info2">ខ័ណ្ឌ ទួលគោក, ភ្នំពេញ, កម្ពុជា</string>
@@ -157,4 +156,6 @@
 
     <!--Video Playlist-->
     <string name="noVideoList">មិនមានវីដេអូទេ</string>
+    <string name="dialogshowing"></string>
+    <string name="contactUs">CONTACT US</string>
 </resources>

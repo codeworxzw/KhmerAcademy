@@ -156,4 +156,5 @@
     <!--Video Playlist-->
     <string name="noVideoList">There is no video in playlist</string>
     <string name="dialogshowing">setting_dialog_fragment</string>
+    <string name="succeedRegister">Register Successfully!</string>
 </resources>

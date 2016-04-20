@@ -92,7 +92,7 @@
                             android:id="@+id/tv_school"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ភេទ"
+                            android:text="@string/profile_gender"
                             android:layout_marginTop="15dp"
                             android:textSize="16sp"/>
                         <Spinner
@@ -101,7 +101,7 @@
                             android:layout_height="wrap_content"
                             android:prompt="@string/spinner_title"
                             android:layout_alignBaseline="@+id/tv_school"
-                            android:layout_marginLeft="50dp"/>
+                            android:layout_marginLeft="80dp"/>
                     </RelativeLayout>
 
 

@@ -48,15 +48,15 @@
             </LinearLayout>
 
             <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:paddingBottom="20dp"
-            android:paddingTop="10dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:background="#ffffff">
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="#ffffff"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp">
 
 
             <android.support.design.widget.TextInputLayout
@@ -76,24 +76,24 @@
                     android:textSize="@dimen/text_edit"/>
 
             </android.support.design.widget.TextInputLayout>
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/layout_in_password"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/layout_in_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_department">
+
+                <EditText
+                    android:id="@+id/editInPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/layout_department">
+                    android:paddingBottom="20dp"
+                    android:singleLine="true"
+                    android:paddingLeft="10dp"
+                    android:inputType="textPassword"
+                    android:hint="@string/pass_word"
+                    android:textSize="@dimen/text_edit" />
 
-                    <EditText
-                        android:id="@+id/editInPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="20dp"
-                        android:singleLine="true"
-                        android:paddingLeft="10dp"
-                        android:inputType="textPassword"
-                        android:hint="@string/pass_word"
-                        android:textSize="@dimen/text_edit" />
-
-                </android.support.design.widget.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -102,38 +102,30 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:padding="20dp">
+
             <Button
                 android:id="@+id/btn_log_in"
-                android:background="#4FA052"
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
+                android:background="#4FA052"
+                android:text="@string/log_in"
                 android:textAllCaps="true"
-                android:textSize="18sp"
                 android:textColor="#ffffff"
-                android:text="@string/log_in"/>
+                android:textSize="18sp" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Or"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/textView" />
-
-            <com.facebook.login.widget.LoginButton
-                android:id="@+id/fb_login_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:text="Or" />
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/fb_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp" />
     </LinearLayout>
     </ScrollView>
 

@@ -49,14 +49,14 @@ import static eu.inmite.android.lib.validations.form.annotations.RegExp.EMAIL;
 public class LogInSignUp extends Fragment implements LinkButtonToTab {
     private String mTitle;
 
-    @NotEmpty(messageId = org.khmeracademy.R.string.validation_empty)
+    @NotEmpty(messageId = R.string.validation_empty, order = 1)
     private EditText edFullName;
 
-    @NotEmpty(messageId = org.khmeracademy.R.string.validation_empty)
-    @RegExp(value = EMAIL, messageId = R.string.validation_valid_email)
+    @NotEmpty(messageId = R.string.validation_empty, order = 2)
+    @RegExp(value = EMAIL, messageId = R.string.validation_valid_email, order = 3)
     private EditText edEmail;
 
-    @NotEmpty(messageId = R.string.validation_empty)
+    @NotEmpty(messageId = R.string.validation_empty, order = 4)
     private EditText edPassword;
 
     private EditText edComfirmPassword;
@@ -97,12 +97,9 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
             spGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    //if(spGender.getSelectedItem().equals(""))
                     if (spGender.getSelectedItemPosition() == 0) {
-                        //Toast.makeText(view.getContext(), "Male", Toast.LENGTH_SHORT).show();
                         gender = "Male";
                     } else {
-                        //Toast.makeText(view.getContext(), "Female", Toast.LENGTH_SHORT).show();
                         gender = "Female";
                     }
                 }
@@ -204,7 +201,12 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
 
     private void validateSignUp(){
         if(FormValidator.validate(this, new SimpleErrorPopupCallback(getContext()))){
-            signUp();
+            if (edComfirmPassword.getText().toString().equals(edPassword.getText().toString())){
+                signUp();
+            }else{
+                edPassword.setError("Password does not match !");
+                edComfirmPassword.setError("Password does not match !");
+            }
         }
         FormValidator.startLiveValidation(this, new SimpleErrorPopupCallback(getContext()));
         FormValidator.stopLiveValidation(this);
@@ -275,13 +277,17 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        final SpotsDialog pDialog = new SpotsDialog(getActivity(),  "កំពុងដំណើរការ");
+        final SpotsDialog pDialog = new SpotsDialog(getActivity(), getText(R.string.spotDialog));
         pDialog.show();
 
         GsonObjectRequest jsonRequest = new GsonObjectRequest(Request.Method.POST, API.signUpUrl, param, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 pDialog.dismiss();
+                edFullName.setText("");
+                edEmail.setText("");
+                edPassword.setText("");
+                edComfirmPassword.setText("");
                 ((LinkButtonToTab) getActivity()).selectTab(0);
                 Toast.makeText(getActivity(), "ចុះឈ្មោះដោយជោគជ័យ", Toast.LENGTH_SHORT).show();
             }
@@ -289,7 +295,7 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
             @Override
             public void onErrorResponse(VolleyError error) {
                 pDialog.dismiss();
-                Toast.makeText(getActivity(), "Please Check Internet Connection !!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.internet_problem, Toast.LENGTH_LONG).show();
             }
         });
         // Add request queue
@@ -313,7 +319,7 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
             e.printStackTrace();
         }
 
-        final SpotsDialog pDialog = new SpotsDialog(getActivity(), "កំពុងដំណើរការ");
+        final SpotsDialog pDialog = new SpotsDialog(getActivity(), getText(R.string.spotDialog));
         pDialog.show();
 
         String url = "http://1.246.219.166:8080/KAAPI/api/authentication/login_with_fb";
