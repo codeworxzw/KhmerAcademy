@@ -7,9 +7,10 @@ public class API {
     public static final String BASE_URL = "http://1.246.219.166:8080/KAAPI";
     // API URL
     public static final String logInUrl = BASE_URL + "/api/authentication/mobilelogin";
+    public static final String fbLoginUrl = BASE_URL + "/api/authentication/login_with_fb";
     public static final String signUpUrl = BASE_URL + "/api/user";
     public static final String mainCategoryUrl = BASE_URL + "/api/elearning/maincategory/listmaincategory";
-    public static final String profileDetail = BASE_URL + "/api/user/";//http://192.168.178.120:8080/KAAPI/api/
+    public static final String profileDetail = BASE_URL + "/api/user/";
     public static final String editProfile = BASE_URL + "/api/user/";
     public static final String updatePassword = BASE_URL + "/api/user/changepassword";
     public static final String listVideoByPlayListIdUrl = BASE_URL + "/api/elearning/playlist/listAllVideoInPlaylist/";
@@ -25,7 +26,6 @@ public class API {
     public static final String deleteReplyComment = BASE_URL + "/api/elearning/comment/";
     public static final String updateReplyComment = BASE_URL + "/api/elearning/comment/";
     public static final String listUniversity_Department = BASE_URL + "/api/user/listuniversity_department?page=1&item=1000";
-
 
     // Header
     public static final String API_KEY = "Authorization";

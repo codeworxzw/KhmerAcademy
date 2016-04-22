@@ -156,7 +156,6 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
                                             JSONObject jsonObjectPicture = object.getJSONObject("picture");
                                             JSONObject jsonObjectData = jsonObjectPicture.getJSONObject("data");
                                             String imageUrl = jsonObjectData.getString("url");
-                                            Log.e("ooooo", fbId + ", " + userName + ", " + email + ", " + gender + ", " + birthday + ", " + imageUrl);
                                             checkFacebookAccount(email, userName, gender, imageUrl, fbId);
                                         }else{
                                             Toast.makeText(getActivity(), "Login with FB, E-mail required !", Toast.LENGTH_SHORT).show();
@@ -204,8 +203,8 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
             if (edComfirmPassword.getText().toString().equals(edPassword.getText().toString())){
                 signUp();
             }else{
-                edPassword.setError("Password does not match !");
-                edComfirmPassword.setError("Password does not match !");
+                edPassword.setError(getString(R.string.password_not_match));
+                edComfirmPassword.setError(getString(R.string.password_not_match));
             }
         }
         FormValidator.startLiveValidation(this, new SimpleErrorPopupCallback(getContext()));
@@ -215,13 +214,13 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
     private void logIn(){
         JSONObject param = new JSONObject();
         try {
-            param.put("email",edEmail.getText().toString());
+            param.put("email", edEmail.getText().toString());
             param.put("password", edPassword.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        final SpotsDialog pDialog = new SpotsDialog(getActivity(), "កំពុងដំណើរការ");
+        final SpotsDialog pDialog = new SpotsDialog(getActivity(), getString(R.string.spotDialog));
         pDialog.show();
 
 
@@ -245,7 +244,7 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
                         startActivity(intent);
                         getActivity().finish();
                     }else{
-                        Toast.makeText(getActivity(), "Invalid email or password!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), R.string.login_failed, Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -277,7 +276,7 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        final SpotsDialog pDialog = new SpotsDialog(getActivity(), getText(R.string.spotDialog));
+        final SpotsDialog pDialog = new SpotsDialog(getActivity(), getString(R.string.spotDialog));
         pDialog.show();
 
         GsonObjectRequest jsonRequest = new GsonObjectRequest(Request.Method.POST, API.signUpUrl, param, new Response.Listener<JSONObject>() {
@@ -289,7 +288,7 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
                 edPassword.setText("");
                 edComfirmPassword.setText("");
                 ((LinkButtonToTab) getActivity()).selectTab(0);
-                Toast.makeText(getActivity(), "ចុះឈ្មោះដោយជោគជ័យ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.verify_email, Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -319,11 +318,10 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
             e.printStackTrace();
         }
 
-        final SpotsDialog pDialog = new SpotsDialog(getActivity(), getText(R.string.spotDialog));
+        final SpotsDialog pDialog = new SpotsDialog(getActivity(), getString(R.string.spotDialog));
         pDialog.show();
 
-        String url = "http://1.246.219.166:8080/KAAPI/api/authentication/login_with_fb";
-        GsonObjectRequest jsonRequest = new GsonObjectRequest(Request.Method.POST, url, param, new Response.Listener<JSONObject>() {
+        GsonObjectRequest jsonRequest = new GsonObjectRequest(Request.Method.POST, API.fbLoginUrl, param, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                 try {
@@ -347,7 +345,7 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
                         startActivity(intent);
                         getActivity().finish();
                     }else{
-                        Toast.makeText(getActivity(), "Invalid email or password!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), R.string.login_failed, Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import org.khmeracademy.Model.CommentItem;
+import org.khmeracademy.R;
 
 import java.util.ArrayList;
 
@@ -23,9 +24,9 @@ public class ReplyCommentAdapter extends RecyclerView.Adapter<ReplyCommentAdapte
 
         public DataObjectHolder(View itemView) {
             super(itemView);
-            userName = (TextView) itemView.findViewById(org.khmeracademy.R.id.tv_cmt_user_name);
-            commentText = (TextView) itemView.findViewById(org.khmeracademy.R.id.tv_cmt_text);
-            dateTime = (TextView) itemView.findViewById(org.khmeracademy.R.id.tv_cmt_date);
+            userName = (TextView) itemView.findViewById(R.id.tv_cmt_user_name);
+            commentText = (TextView) itemView.findViewById(R.id.tv_cmt_text);
+            dateTime = (TextView) itemView.findViewById(R.id.tv_cmt_date);
         }
     }
 
@@ -38,7 +39,7 @@ public class ReplyCommentAdapter extends RecyclerView.Adapter<ReplyCommentAdapte
 
     @Override
     public DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(org.khmeracademy.R.layout.list_reply_comment_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_reply_comment_item, parent, false);
         DataObjectHolder dataObjectHolder = new DataObjectHolder(view);
         return dataObjectHolder;
     }

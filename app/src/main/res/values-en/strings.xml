@@ -103,7 +103,7 @@
     <string name="static_fragment">Static fragment</string>
     <string name="to_second_fragment">Change to second fragment</string>
     <string name="to_static_fragment">Change to static fragment</string>
-    <string name="internet_problem">Internet connection error</string>
+    <string name="internet_problem">Network Error</string>
 
     <!--Facebook connection-->
     <string name="facebook_app_id">952178931544511</string>
@@ -130,7 +130,7 @@
     <string name="female">Female</string>
 
     <!--Reply comments-->
-    <string name="reply_comment">Reply comment</string>
+    <string name="reply_comment">Replies</string>
     <string name="reply">Reply</string>
     <string name="comment">Comments</string>
     <string name="yourComment">Your comment</string>
@@ -157,4 +157,17 @@
     <string name="noVideoList">There is no video in playlist</string>
     <string name="dialogshowing">setting_dialog_fragment</string>
     <string name="succeedRegister">Register Successfully!</string>
+    <string name="verify_email">Please check your email for verification !</string>
+    <string name="password_not_match">Password does not match !</string>
+    <string name="login_failed">Invalid email or password!</string>
+    <string name="choose">Please Choose</string>
+    <string name="delete">Delete</string>
+    <string name="update">Edit</string>
+    <string name="done">Done</string>
+    <string name="failed">Failed</string>
+    <string name="no_old_comment">No previous comments</string>
+    <string name="no_comments">No Comments !</string>
+    <string name="no_previous_reply_comments">No previous replies !</string>
+    <string name="no_replies">No replies !</string>
+    <string name="your_comment">Your comment...</string>
 </resources>

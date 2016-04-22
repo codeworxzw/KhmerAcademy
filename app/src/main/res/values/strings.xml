@@ -94,7 +94,7 @@
 
     <!--String Email Validator-->
     <string name="validation_valid_email">Please, enter valid email address</string>
-    <string name="validation_empty">Cannot be empty!</string>
+    <string name="validation_empty">មិនអាចទទេ</string>
     <string name="validation_success">Validation succeeded! \nThat was easy, wasn\'t it?</string>
 
     <!--String comment-->
@@ -158,4 +158,17 @@
     <string name="noVideoList">មិនមានវីដេអូទេ</string>
     <string name="dialogshowing"></string>
     <string name="contactUs">CONTACT US</string>
+    <string name="verify_email">សូមពិនិត្យប្រអប់សាររបស់អ្នក</string>
+    <string name="password_not_match">លេខសំងាត់មិនត្រូវគ្នា</string>
+    <string name="login_failed">អ៊ីម៉ែល ឬ លេខសំងាត់មិនត្រឹមត្រូវ</string>
+    <string name="choose">សូមជ្រើសរើស</string>
+    <string name="delete">លុប</string>
+    <string name="update">កែប្រែ</string>
+    <string name="done">រួចរាល់</string>
+    <string name="failed">បរាជ័យ</string>
+    <string name="no_old_comment">មិនមានមតិចាស់ៗទេ</string>
+    <string name="no_comments">មិនមានមតិទេ</string>
+    <string name="no_previous_reply_comments">មិនមានមតិឆ្លើយតបចាស់ៗទេ</string>
+    <string name="no_replies">មិនមានការឆ្លើយតបទេ</string>
+    <string name="your_comment">មតិរបស់អ្នក...</string>
 </resources>

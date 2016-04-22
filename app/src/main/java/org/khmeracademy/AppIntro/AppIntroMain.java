@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import com.github.paolorotolo.appintro.AppIntro2;
 import org.khmeracademy.Activity.RegisterActivity;
+import org.khmeracademy.R;
 
 /**
  * Created by sok-ngim on 12/28/15.
@@ -18,11 +19,6 @@ public class AppIntroMain extends AppIntro2 {
     public void init(Bundle savedInstanceState) {
 
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, 0);
-        /*String result = prefs.getString("AppInstall", null);
-        if(result != null) {
-            Intent intent1 = new Intent(this, RegisterActivity.class);
-            startActivity(intent1);
-        }*/
         if (prefs.getBoolean("APP", false) == true) {
             Intent intent1 = new Intent(this, RegisterActivity.class);
             startActivity(intent1);
@@ -31,9 +27,9 @@ public class AppIntroMain extends AppIntro2 {
 
         // Add your slide's fragments here
         // AppIntro will automatically generate the dots indicator and buttons.
-        addSlide(SampleSlide.newInstance(org.khmeracademy.R.layout.intro));
-        addSlide(SampleSlide.newInstance(org.khmeracademy.R.layout.intro2));
-        addSlide(SampleSlide.newInstance(org.khmeracademy.R.layout.intro3));
+        addSlide(SampleSlide.newInstance(R.layout.intro));
+        addSlide(SampleSlide.newInstance(R.layout.intro2));
+        addSlide(SampleSlide.newInstance(R.layout.intro3));
 
         setIndicatorColor(Color.parseColor("#5F6B6F"), Color.parseColor("#AAB0B2"));
         setProgressButtonEnabled(false);

@@ -33,6 +33,7 @@ import org.khmeracademy.Model.CommentItem;
 import org.khmeracademy.NetworkRequest.API;
 import org.khmeracademy.NetworkRequest.GsonObjectRequest;
 import org.khmeracademy.NetworkRequest.VolleySingleton;
+import org.khmeracademy.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -72,12 +73,12 @@ public class CommentFragment extends Fragment {
         user_name = getActivity().getSharedPreferences("userSession", 0).getString("userName", "N/A");
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(org.khmeracademy.R.layout.comment_fragment, container, false);
+        View view = inflater.inflate(R.layout.comment_fragment, container, false);
         initViews(view);
 
         if (edComment.getText().toString().equals("")) {
             imgSend.setEnabled(false);
-            imgSend.setImageResource(org.khmeracademy.R.drawable.send_disable);
+            imgSend.setImageResource(R.drawable.send_disable);
         }
 
         edComment.addTextChangedListener(new TextWatcher() {
@@ -90,10 +91,10 @@ public class CommentFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() == 0) {
                     imgSend.setEnabled(false);
-                    imgSend.setImageResource(org.khmeracademy.R.drawable.send_disable);
+                    imgSend.setImageResource(R.drawable.send_disable);
                 } else {
                     imgSend.setEnabled(true);
-                    imgSend.setImageResource(org.khmeracademy.R.drawable.send);
+                    imgSend.setImageResource(R.drawable.send);
                 }
             }
 
@@ -122,7 +123,7 @@ public class CommentFragment extends Fragment {
             @Override
             public void onItemClick(View childView, int position) {
                 FragmentTransaction trans = getChildFragmentManager().beginTransaction();
-                trans.replace(org.khmeracademy.R.id.root_frame, ReplyCommentFragment.newInstance(commentItems.get(position).getCmt_id(), video_id));
+                trans.replace(R.id.root_frame, ReplyCommentFragment.newInstance(commentItems.get(position).getCmt_id(), video_id));
                 trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 trans.addToBackStack("ReplyCommentFragment");
                 trans.commit();
@@ -131,14 +132,14 @@ public class CommentFragment extends Fragment {
             @Override
             public void onItemLongPress(View childView, final int position) {
                 if (user_id.equals(commentItems.get(position).getUserId())) {
-                    new BottomSheet.Builder(getActivity()).title("សូមជ្រើសរើស").sheet(org.khmeracademy.R.menu.pop_up_edit_comment).listener(new DialogInterface.OnClickListener() {
+                    new BottomSheet.Builder(getActivity()).title(R.string.choose).sheet(R.menu.pop_up_edit_comment).listener(new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             switch (which) {
-                                case org.khmeracademy.R.id.delete:
+                                case R.id.delete:
                                     deleteComment(commentItems.get(position).getCmt_id(), position);
                                     break;
-                                case org.khmeracademy.R.id.edit:
+                                case R.id.edit:
                                     Toast.makeText(getActivity(), "Edit", Toast.LENGTH_SHORT).show();
                                     // get comment_id for update button !
                                     comment_id = commentItems.get(position).getCmt_id();
@@ -192,12 +193,13 @@ public class CommentFragment extends Fragment {
             pageCount++;
             getComment(pageCount, rowCount);
         } else {
-            Toast.makeText(getContext(), "មិនមានមតិចាស់ៗទេ", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), R.string.no_old_comment, Toast.LENGTH_LONG).show();
         }
         mSwipeRefreshWidget.setRefreshing(false);
     }
 
 
+    /* Get Comments */
     private void getComment(int pageCount, int rowCount) {
         String url = API.listCommentByVideoId + video_id + "?page=" + pageCount + "&item=" + rowCount + "";
         GsonObjectRequest jsonRequest = new GsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
@@ -208,7 +210,6 @@ public class CommentFragment extends Fragment {
                         JSONObject jsonPagination = response.getJSONObject("PAGINATION");
                         totalRecords = jsonPagination.getInt("totalCount");
                         totalPages = getTotalPages(totalRecords);
-
                     }
 
                     // If logIn Successfully
@@ -227,7 +228,7 @@ public class CommentFragment extends Fragment {
                         }
                     } else {
                         if (getActivity() != null) {
-                            Toast.makeText(getActivity(), "មិនមានមតិទេ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), R.string.no_comments, Toast.LENGTH_SHORT).show();
                         }
                     }
                 } catch (JSONException e) {
@@ -239,7 +240,7 @@ public class CommentFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "Please check your Internet Connection !", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.internet_problem, Toast.LENGTH_LONG).show();
             }
         });
         VolleySingleton.getsInstance().addToRequestQueue(jsonRequest);
@@ -248,7 +249,7 @@ public class CommentFragment extends Fragment {
     /* Add comment */
     private void addComment(final String comment_text, final String video_id, final String user_id) {
         imgSend.setEnabled(false);
-        imgSend.setImageResource(org.khmeracademy.R.drawable.send_disable);
+        imgSend.setImageResource(R.drawable.send_disable);
         JSONObject param = new JSONObject();
         try {
             param.put("commentText", comment_text);
@@ -275,10 +276,10 @@ public class CommentFragment extends Fragment {
                             edComment.setText("");
                             mAdapter.notifyItemChanged(commentItems.size() - 1);
                             mRecyclerView.scrollToPosition(commentItems.size() - 1);
-                            Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), R.string.done, Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getActivity(), "Add comment Failed!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.failed, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -288,8 +289,8 @@ public class CommentFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 imgSend.setEnabled(true);
-                imgSend.setImageResource(org.khmeracademy.R.drawable.send);
-                Toast.makeText(getActivity(), org.khmeracademy.R.string.internet_problem, Toast.LENGTH_LONG).show();
+                imgSend.setImageResource(R.drawable.send);
+                Toast.makeText(getActivity(), R.string.internet_problem, Toast.LENGTH_LONG).show();
             }
         });
         // Add request queue
@@ -307,9 +308,10 @@ public class CommentFragment extends Fragment {
                         if (response.getBoolean("STATUS")) {
                             commentItems.remove(position);
                             mAdapter.notifyItemRemoved(position);
+                            Toast.makeText(getActivity(), R.string.done, Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getActivity(), "Delete comment Failed!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.failed, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -318,7 +320,7 @@ public class CommentFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), org.khmeracademy.R.string.internet_problem, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.internet_problem, Toast.LENGTH_LONG).show();
             }
         });
         VolleySingleton.getsInstance().addToRequestQueue(jsonRequest);
@@ -346,10 +348,10 @@ public class CommentFragment extends Fragment {
                             commentItems.get(position).setCmt_text(edComment.getText().toString());
                             edComment.setText("");
                             mAdapter.notifyItemChanged(position);
-                            Toast.makeText(getActivity(), "Update Successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), R.string.done, Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getActivity(), "Update comment Failed!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.failed, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -360,17 +362,17 @@ public class CommentFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), org.khmeracademy.R.string.internet_problem, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.internet_problem, Toast.LENGTH_LONG).show();
             }
         });
         VolleySingleton.getsInstance().addToRequestQueue(jsonRequest);
     }
 
     private void initViews(View view) {
-        mSwipeRefreshWidget = (SwipeRefreshLayout) view.findViewById(org.khmeracademy.R.id.swipe_refresh_widget);
-        edComment = (EditText) view.findViewById(org.khmeracademy.R.id.ed_comment);
-        mRecyclerView = (RecyclerView) view.findViewById(org.khmeracademy.R.id.my_recycler_view);
-        imgSend = (ImageView) view.findViewById(org.khmeracademy.R.id.imgSend);
+        mSwipeRefreshWidget = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_widget);
+        edComment = (EditText) view.findViewById(R.id.ed_comment);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
+        imgSend = (ImageView) view.findViewById(R.id.imgSend);
     }
 
     @Override

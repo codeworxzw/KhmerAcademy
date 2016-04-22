@@ -276,7 +276,7 @@ public class VideoPlayer extends AppCompatActivity implements YoutubePlayBackLis
                             mPlayListItems.get(current_position).setVote(mPlayListItems.get(current_position).getVote() - 1);
                             numberOfLike.setText(mPlayListItems.get(current_position).getVote() + "");
                             isLike = !isLike;
-                            Toast.makeText(VideoPlayer.this, "ឈប់ចូលចិត្ត", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VideoPlayer.this, R.string.unlike, Toast.LENGTH_SHORT).show();
                             like.setImageResource(R.drawable.ic_unlike);
                         }
                     } catch (JSONException e) {
@@ -302,7 +302,7 @@ public class VideoPlayer extends AppCompatActivity implements YoutubePlayBackLis
                             mPlayListItems.get(current_position).setVote(mPlayListItems.get(current_position).getVote() + 1);
                             numberOfLike.setText(mPlayListItems.get(current_position).getVote() + "");
                             isLike = !isLike;
-                            Toast.makeText(VideoPlayer.this, "ចូលចិត្ត", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VideoPlayer.this, R.string.unlike, Toast.LENGTH_SHORT).show();
                             like.setImageResource(R.drawable.ic_like);
                         }
                     } catch (JSONException e) {

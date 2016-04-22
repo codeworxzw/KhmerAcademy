@@ -37,7 +37,7 @@
                 android:layout_weight="8.5"
                 android:gravity="center"
                 android:layout_height="wrap_content"
-                android:text="មតិឆ្លើយតប"
+                android:text="@string/reply_comment"
                 android:paddingLeft="-55dp"
                 android:textColor="#61786A"
                 android:textStyle="bold" />
@@ -72,7 +72,7 @@
                 android:padding="7dp"
                 android:background="@android:color/transparent"
                 android:imeOptions="actionDone"
-                android:hint="មតិរបស់អ្នក" />
+                android:hint="@string/your_comment" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
