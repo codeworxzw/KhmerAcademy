@@ -108,6 +108,9 @@
     <!--Facebook connection-->
     <string name="facebook_app_id">952178931544511</string>
 
+    <!-- Google Map API Key -->
+    <string name="google_map_API_KEY">AIzaSyC37rSNjWt1ChrV5xxhqPBd7zPln-S1MvI</string>
+
     <!--Language Changing-->
     <string name="language">ភាសា</string>
     <string name="lan_cancel">បោះបង់</string>
@@ -171,4 +174,5 @@
     <string name="no_previous_reply_comments">មិនមានមតិឆ្លើយតបចាស់ៗទេ</string>
     <string name="no_replies">មិនមានការឆ្លើយតបទេ</string>
     <string name="your_comment">មតិរបស់អ្នក...</string>
+
 </resources>

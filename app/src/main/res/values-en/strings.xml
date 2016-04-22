@@ -105,9 +105,6 @@
     <string name="to_static_fragment">Change to static fragment</string>
     <string name="internet_problem">Network Error</string>
 
-    <!--Facebook connection-->
-    <string name="facebook_app_id">952178931544511</string>
-
     <!--Language Changing-->
     <string name="language">Language</string>
 
