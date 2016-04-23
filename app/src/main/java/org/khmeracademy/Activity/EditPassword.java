@@ -28,6 +28,7 @@ import org.khmeracademy.Util.CustomDialog;
 import org.khmeracademy.Util.MyNavigationDrawer;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.khmeracademy.Util.Session;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -81,12 +82,7 @@ public class EditPassword extends AppCompatActivity{
         et_new_password = (TextView) findViewById(org.khmeracademy.R.id.editNewPwd);
         et_confirm_password = (TextView) findViewById(org.khmeracademy.R.id.editConfirmPwd);
 
-        user_id = getSharedPreferences("userSession", 0).getString("id", "N/A");
-        /*try {
-            requestResponse(id);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
+        user_id = Session.id;
 
     }
 
@@ -183,7 +179,6 @@ public class EditPassword extends AppCompatActivity{
             public void onResponse(JSONObject response) {
                 try {
                     if (response.getBoolean("STATUS")) {
-                        getSharedPreferences("userSession", 0).edit().clear().apply();
                         Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);

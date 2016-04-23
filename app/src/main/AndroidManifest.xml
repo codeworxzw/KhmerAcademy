@@ -29,7 +29,6 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -46,7 +45,6 @@
             android:configChanges="orientation|screenSize" android:screenOrientation="portrait"/>
         <activity android:name="org.khmeracademy.Activity.MainCategory" android:screenOrientation="portrait"/>
         <activity android:name="org.khmeracademy.Activity.EditPassword" android:screenOrientation="portrait"/>
-        <activity android:name="org.khmeracademy.Activity.LogInActivity" android:screenOrientation="portrait"/>
         <activity android:name="org.khmeracademy.Activity.AboutUs" android:screenOrientation="portrait"/>
         <activity android:name="org.khmeracademy.Activity.ActivitySearchSub" android:screenOrientation="portrait"/>
         <activity android:name="org.khmeracademy.Activity.MainActivity" android:screenOrientation="portrait"/>

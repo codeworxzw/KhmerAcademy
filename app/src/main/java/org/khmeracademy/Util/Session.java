@@ -37,14 +37,15 @@ public class Session {
     }
 
     // Save User info to SharedPreferenceFile
-    public static void saveUserSession(Context context, String userId, String name, String userEmail, String userGender, String profileUrl) {
+    public static void saveUserSession(Context context, String userId, String name, String userEmail, String userGender, String profileUrl, String coverUrl) {
         mContext = context;
         id = userId;
         userName = name;
         email = userEmail;
         gender = userGender;
         profile_picture = profileUrl;
-        cover_picture = profileUrl;
+        cover_picture = coverUrl;
+        isLogin = true;
 
         sharedPref = mContext.getSharedPreferences(sharedPrefName, Context.MODE_PRIVATE);
         sharedPrefEditor = sharedPref.edit();
@@ -53,7 +54,7 @@ public class Session {
         sharedPrefEditor.putString(NAME, name);
         sharedPrefEditor.putString(EMAIL, userEmail);
         sharedPrefEditor.putString(PROFILE_PICTURE, profileUrl);
-        sharedPrefEditor.putString(COVER_PICTURE, profileUrl);
+        sharedPrefEditor.putString(COVER_PICTURE, coverUrl);
         sharedPrefEditor.putBoolean(IS_LOGIN, true);
         sharedPrefEditor.apply();
     }
@@ -72,11 +73,12 @@ public class Session {
     }
 
     // Clear Session or clean all data from SharedPreferenceFile
-    public static void cleanSession() {
+    public static void clearSession() {
         mContext.getSharedPreferences(sharedPrefName, Context.MODE_PRIVATE).edit().clear().apply();
     }
 
     public static void updateName(String newName) {
+        userName = newName;
         sharedPref = mContext.getSharedPreferences(sharedPrefName, Context.MODE_PRIVATE);
         sharedPrefEditor = sharedPref.edit();
         sharedPrefEditor.putString(NAME, newName);
@@ -84,6 +86,7 @@ public class Session {
     }
 
     public static void updateGender(String newGender) {
+        gender = newGender;
         sharedPref = mContext.getSharedPreferences(sharedPrefName, Context.MODE_PRIVATE);
         sharedPrefEditor = sharedPref.edit();
         sharedPrefEditor.putString(GENDER, newGender);
@@ -91,6 +94,7 @@ public class Session {
     }
 
     public static void updateProfilePicture(String imgUrl) {
+        profile_picture = imgUrl;
         sharedPref = mContext.getSharedPreferences(sharedPrefName, Context.MODE_PRIVATE);
         sharedPrefEditor = sharedPref.edit();
         sharedPrefEditor.putString(PROFILE_PICTURE, imgUrl);

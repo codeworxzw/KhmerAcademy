@@ -40,6 +40,7 @@ import org.khmeracademy.NetworkRequest.VolleySingleton;
 import org.khmeracademy.NetworkRequest.Youtube;
 import org.khmeracademy.R;
 import org.khmeracademy.Util.MyNavigationDrawer;
+import org.khmeracademy.Util.Session;
 import org.khmeracademy.Util.SmoothLinearLayoutManager;
 
 import org.json.JSONArray;
@@ -127,7 +128,7 @@ public class VideoPlayer extends AppCompatActivity implements YoutubePlayBackLis
                             // for calculate number of like on updateLike
                             current_position = position;
                             video_id = mPlayListItems.get(position).getId();
-                            checkLikeForVideo(getSharedPreferences("userSession", 0).getString("id", null), video_id);
+                            checkLikeForVideo(Session.id, video_id);
                             // Replace old vdo with new vdo
                             youTubePlayer.loadVideo(mPlayListItems.get(position).getVideo_url());
                         } catch (Exception e) {
@@ -214,12 +215,11 @@ public class VideoPlayer extends AppCompatActivity implements YoutubePlayBackLis
         like_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateLike(getSharedPreferences("userSession", 0).getString("id", null), video_id);
+                updateLike(Session.id, video_id);
             }
         });
 
-        checkLikeForVideo(getSharedPreferences("userSession", 0).getString("id", null), video_id);
-        //tvShare.setShareContent(content);
+        checkLikeForVideo(Session.id, video_id);
 
         //Click on share text
         share_layout.setOnClickListener(new View.OnClickListener() {
@@ -375,7 +375,7 @@ public class VideoPlayer extends AppCompatActivity implements YoutubePlayBackLis
                 numberOfLike.setText(mPlayListItems.get(current_position).getVote() + "");
                 // for calculate number of like on updateLike
                 video_id = mPlayListItems.get(current_position).getId();
-                checkLikeForVideo(getSharedPreferences("userSession", 0).getString("id", null), video_id);
+                checkLikeForVideo(Session.id, video_id);
                 // Replace old vdo with new vdo
                 youTubePlayer.loadVideo(mPlayListItems.get(current_position).getVideo_url());
             }

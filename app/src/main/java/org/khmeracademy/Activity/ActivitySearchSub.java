@@ -45,31 +45,12 @@ public class ActivitySearchSub extends AppCompatActivity{
     private ArrayList<SubCategoryItem> mCatList = new ArrayList<>();
 
     private RecyclerView mRecyclerView;
-    private ImageView mBgImageView;
-    private View mColorBackgroundView;
-    private TextView titleTextView, numVideos, describe;
     private Toolbar toolbar;
-    private int position;
     private String textSearch;
 
     // Setting adapter
     private SubCatRecyclerAdapter adapter;
 
-    // Some of colors
-    private int[] color = {
-            0xA609947F, 0xA6095894, 0xA6091094, 0xA665219E, 0xA69E214D,
-            0xA609947F, 0xA6095894, 0xA6091094, 0xA665219E, 0xA69E214D,
-            0xA609947F, 0xA6095894, 0xA6091094, 0xA665219E, 0xA69E214D,
-            0xA609947F, 0xA6095894, 0xA6091094, 0xA665219E, 0xA69E214D
-    };
-
-    // Some of images
-    private int[] drawable = {
-            org.khmeracademy.R.drawable.bgrow, org.khmeracademy.R.drawable.bgrowa, org.khmeracademy.R.drawable.bgrowb, org.khmeracademy.R.drawable.bgrow, org.khmeracademy.R.drawable.bgrowa,
-            org.khmeracademy.R.drawable.bgrow, org.khmeracademy.R.drawable.bgrowa, org.khmeracademy.R.drawable.bgrowb, org.khmeracademy.R.drawable.bgrow, org.khmeracademy.R.drawable.bgrowa,
-            org.khmeracademy.R.drawable.bgrow, org.khmeracademy.R.drawable.bgrowa, org.khmeracademy.R.drawable.bgrowb, org.khmeracademy.R.drawable.bgrow, org.khmeracademy.R.drawable.bgrowa,
-            org.khmeracademy.R.drawable.bgrow, org.khmeracademy.R.drawable.bgrowa, org.khmeracademy.R.drawable.bgrowb, org.khmeracademy.R.drawable.bgrow, org.khmeracademy.R.drawable.bgrowa,
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,11 +115,6 @@ public class ActivitySearchSub extends AppCompatActivity{
 
     private void initViews() {
         mRecyclerView = (RecyclerView) findViewById(org.khmeracademy.R.id.sub_cat_recycler_view);
-        mColorBackgroundView = findViewById(org.khmeracademy.R.id.colorItem);
-        mBgImageView = (ImageView)findViewById(org.khmeracademy.R.id.bgImageItem);
-        titleTextView = (TextView) findViewById(org.khmeracademy.R.id.title);
-        numVideos = (TextView)findViewById(org.khmeracademy.R.id.num_videos);
-        describe = (TextView)findViewById(org.khmeracademy.R.id.describe);
     }
 
     // Disable save menu item

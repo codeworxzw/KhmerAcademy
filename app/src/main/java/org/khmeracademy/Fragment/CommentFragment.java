@@ -34,6 +34,7 @@ import org.khmeracademy.NetworkRequest.API;
 import org.khmeracademy.NetworkRequest.GsonObjectRequest;
 import org.khmeracademy.NetworkRequest.VolleySingleton;
 import org.khmeracademy.R;
+import org.khmeracademy.Util.Session;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -69,8 +70,8 @@ public class CommentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // get Arguments
         video_id = getArguments().getString("video_id", "N/A");
-        user_id = getActivity().getSharedPreferences("userSession", 0).getString("id", "N/A");
-        user_name = getActivity().getSharedPreferences("userSession", 0).getString("userName", "N/A");
+        user_id = Session.id;
+        user_name = Session.userName;
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.comment_fragment, container, false);
@@ -224,6 +225,7 @@ public class CommentFragment extends Fragment {
                             cmt.setCmt_date(jsonObject.getString("commentDate"));
                             cmt.setUserName(jsonObject.getString("username"));
                             cmt.setUserId(jsonObject.getString("userId"));
+                            cmt.setUserImageUrl(jsonObject.getString("userImageUrl"));
                             commentItems.add(0, cmt);
                         }
                     } else {

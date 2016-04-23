@@ -3,7 +3,6 @@ package org.khmeracademy.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -50,6 +49,8 @@ import org.khmeracademy.Util.MyNavigationDrawer;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.khmeracademy.Util.Session;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -79,9 +80,7 @@ public class EditProfile extends AppCompatActivity {
     private EditText username;
     private EditText dateOfBirth;
     private EditText phone;
-    private TextView userImageUrl;
     private boolean isChangeProfileImage;
-    String user_id;
     Tracker mTracker;
     ArrayList<UniversityItem> mUniversityList = new ArrayList<>();
     ArrayList<DepartmentItem> mDepartmentList = new ArrayList<>();
@@ -103,8 +102,6 @@ public class EditProfile extends AppCompatActivity {
         mTracker = ((MyApplication) getApplication()).getDefaultTracker();
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-        user_id = getIntent().getStringExtra("userId");
 
         // Call Toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar_main);
@@ -171,7 +168,7 @@ public class EditProfile extends AppCompatActivity {
         });
 
         try {
-            requestResponse(user_id);
+            requestResponse(Session.id);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -183,7 +180,6 @@ public class EditProfile extends AppCompatActivity {
         //department = (EditText) findViewById(R.id.editDepartment);
 //        university = (EditText) findViewById(R.id.editSchool);
         phone = (EditText) findViewById(R.id.editPhone);
-        userImageUrl = (TextView) findViewById(R.id.user_image_url);
         selectUniversity = (Spinner) findViewById(R.id.editSchool);
         selectDepartment = (Spinner) findViewById(R.id.editDepartment);
 //        selectUniversity.setBackgroundColor(Color.parseColor("#FF0000"));
@@ -352,19 +348,18 @@ public class EditProfile extends AppCompatActivity {
 
     // update user name
     public void requestUpdate() {
-        SharedPreferences session = getBaseContext().getSharedPreferences("userSession", 0);
-        imagePath = (isChangeProfileImage) ? imagePath : session.getString("profile_picture", "N/A");
+        imagePath = (isChangeProfileImage) ? imagePath : Session.profile_picture;
         JSONObject params;
         try {
             params = new JSONObject();
             params.put("username", username.getText().toString().trim());
             params.put("dateOfBirth", dateOfBirth.getText().toString());
             params.put("userImageUrl", imagePath);
-            params.put("gender", session.getString("gender", "N/A"));
+            params.put("gender", Session.gender);
             params.put("departmentId", departmentId);
             params.put("universityId", universityId);
             params.put("phoneNumber", phone.getText().toString().trim());
-            params.put("userId", user_id);
+            params.put("userId", Session.id);
 
             GsonObjectRequest jsonRequest = new GsonObjectRequest(Request.Method.PUT, API.editProfile, params, new Response.Listener<JSONObject>() {
 
@@ -373,18 +368,16 @@ public class EditProfile extends AppCompatActivity {
                     try {
                         if (response.getBoolean("STATUS")) {
                             try {
-                                getBaseContext().getSharedPreferences("userSession", 0).edit()
-                                        .putString("profile_picture", imagePath)
-                                        .putString("userName", username.getText().toString().trim())
-                                        .apply();
+                                Session.updateName(username.getText().toString().trim());
+                                Session.updateProfilePicture(imagePath);
                                 nvd.requestInfoNav();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            Toast.makeText(getBaseContext(), "Successfully Edited", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), R.string.done, Toast.LENGTH_LONG).show();
                         }
                     } catch (JSONException e) {
-                        Toast.makeText(EditProfile.this, "Unsuccessfully Edited !!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(EditProfile.this, R.string.failed, Toast.LENGTH_LONG).show();
                     } finally {
                         CustomDialog.hideProgressDialog();
                     }
@@ -397,9 +390,7 @@ public class EditProfile extends AppCompatActivity {
                 }
             });
             VolleySingleton.getsInstance().addToRequestQueue(jsonRequest);
-        } catch (JSONException e) {
-            Toast.makeText(EditProfile.this, "ERROR_MESSAGE_JSONOBJECT" + e.getMessage(), Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
+        }catch (Exception e) {
             Toast.makeText(EditProfile.this, "ERROR_MESSAGE_EXP" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }

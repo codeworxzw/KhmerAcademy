@@ -27,6 +27,8 @@ import org.khmeracademy.Util.MyNavigationDrawer;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.khmeracademy.Util.Session;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -44,7 +46,7 @@ public class UserProfileDetail extends AppCompatActivity {
     private TextView phone;
     private MyNavigationDrawer nvd;
     private CircleImageView imageProfile;
-    String imagePath, user_id;
+    String imagePath;
     Tracker mTracker;
 
     @Override
@@ -77,10 +79,8 @@ public class UserProfileDetail extends AppCompatActivity {
 
         // Call navigation drawer
         nvd = new MyNavigationDrawer(this, R.id.nav_view);
-
-        user_id = getIntent().getStringExtra("userId");
         try {
-            requestResponse(user_id);
+            requestResponse(Session.id);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -156,7 +156,7 @@ public class UserProfileDetail extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 CustomDialog.hideProgressDialog();
-                Toast.makeText(UserProfileDetail.this, "There is Something Wrong !!", Toast.LENGTH_LONG).show();
+                Toast.makeText(UserProfileDetail.this, R.string.internet_problem, Toast.LENGTH_LONG).show();
             }
         });
         // Add request queue

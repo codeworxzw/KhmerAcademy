@@ -117,7 +117,7 @@ public class ReplyCommentFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new ReplyCommentAdapter(commentItems);
+        mAdapter = new ReplyCommentAdapter(commentItems, getActivity());
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getActivity()).build());
 

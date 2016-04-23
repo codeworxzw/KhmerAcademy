@@ -18,15 +18,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Utility.isNetworkAvailable(this)){
-            Log.i("ooooo", "True");
-        }else{
-            Log.i("ooooo", "False");
-        }
 
-        if(Session.isLogin){
+
+        if (Session.isLogin) {
             i = new Intent(this, MainCategory.class);
-        }else{
+        } else {
             i = new Intent(this, AppIntroMain.class);
         }
         startActivity(i);

@@ -6,8 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
 import org.khmeracademy.Model.CommentItem;
+import org.khmeracademy.R;
 
 import java.util.ArrayList;
 
@@ -23,6 +28,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.DataObje
         TextView commentText;
         TextView dateTime;
         TextView tvReply;
+        ImageView userIcon;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
@@ -30,6 +36,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.DataObje
             commentText = (TextView) itemView.findViewById(org.khmeracademy.R.id.tv_cmt_text);
             dateTime = (TextView) itemView.findViewById(org.khmeracademy.R.id.tv_cmt_date);
             tvReply =(TextView) itemView.findViewById(org.khmeracademy.R.id.reply_comment);
+            userIcon = (ImageView) itemView.findViewById(R.id.image);
         }
     }
 
@@ -50,6 +57,10 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.DataObje
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, final int position) {
+        Picasso.with(mContext)
+                .load(mDataset.get(position).getUserImageUrl())
+                .placeholder(R.drawable.icon_user1)
+                .error(org.khmeracademy.R.drawable.thumbnail_error).into(holder.userIcon);
         holder.userName.setText(mDataset.get(position).getUserName());
         holder.commentText.setText(mDataset.get(position).getCmt_text());
         holder.dateTime.setText(mDataset.get(position).getCmt_date());

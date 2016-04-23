@@ -36,6 +36,7 @@ import org.khmeracademy.NetworkRequest.VolleySingleton;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.khmeracademy.R;
+import org.khmeracademy.Util.Session;
 
 import dmax.dialog.SpotsDialog;
 import eu.inmite.android.lib.validations.form.FormValidator;
@@ -63,7 +64,6 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
     private Button btnSignUp;
     private Button btnLogIn;
     private Spinner spGender;
-    private SharedPreferences.Editor sessionEditor;
     private String gender;
     private CallbackManager callbackManager;
     private LoginButton fbLoginButton;
@@ -231,15 +231,13 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
                     // If logIn Successfully
                     if (response.getBoolean("STATUS")){
                         JSONObject jsonObject = response.getJSONObject("USER");
-                        sessionEditor = getActivity().getSharedPreferences("userSession",0).edit();
-                        sessionEditor.putBoolean("isLogin", true);
-                        sessionEditor.putString("id", jsonObject.getString("userId"));
-                        sessionEditor.putString("gender", jsonObject.getString("gender"));
-                        sessionEditor.putString("profile_picture", jsonObject.getString("userImageUrl"));
-                        sessionEditor.putString("cover_picture", jsonObject.getString("userImageUrl"));
-                        sessionEditor.putString("userName", jsonObject.getString("username"));
-                        sessionEditor.putString("email", jsonObject.getString("email"));
-                        sessionEditor.apply();
+                        String id = jsonObject.getString("userId");
+                        String userName = jsonObject.getString("username");
+                        String gender = jsonObject.getString("gender");
+                        String profilePicture = jsonObject.getString("userImageUrl");
+                        String coverPicture = jsonObject.getString("userImageUrl");
+                        String email = jsonObject.getString("email");
+                        Session.saveUserSession(getActivity(), id, userName, email, gender, profilePicture, coverPicture);
                         Intent intent = new Intent(getActivity(), MainCategory.class);
                         startActivity(intent);
                         getActivity().finish();
@@ -328,17 +326,13 @@ public class LogInSignUp extends Fragment implements LinkButtonToTab {
                     // If logIn Successfully
                     if (response.getBoolean("STATUS")){
                         JSONObject jsonObject = response.getJSONObject("USER");
-
-                        // Save user session
-                        sessionEditor = getActivity().getSharedPreferences("userSession",0).edit();
-                        sessionEditor.putBoolean("isLogin", true);
-                        sessionEditor.putString("id", jsonObject.getString("userId"));
-                        sessionEditor.putString("gender", jsonObject.getString("gender"));
-                        sessionEditor.putString("profile_picture", imageUrl);
-                        sessionEditor.putString("cover_picture", imageUrl);
-                        sessionEditor.putString("userName", userName);
-                        sessionEditor.putString("email", email);
-                        sessionEditor.apply();
+                        String id = jsonObject.getString("userId");
+                        String userName = jsonObject.getString("username");
+                        String gender = jsonObject.getString("gender");
+                        String profilePicture = jsonObject.getString("userImageUrl");
+                        String coverPicture = jsonObject.getString("userImageUrl");
+                        String email = jsonObject.getString("email");
+                        Session.saveUserSession(getActivity(), id, userName, email, gender, profilePicture, coverPicture);
 
                         Intent intent = new Intent(getActivity(), MainCategory.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);

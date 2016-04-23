@@ -33,7 +33,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by Longdy on 1/19/2016.
  */
 public class MyNavigationDrawer {
-    private String userId;
     private Activity mActivity;
     private TextView username;
     private TextView email;
@@ -62,7 +61,6 @@ public class MyNavigationDrawer {
             e.printStackTrace();
         }
 
-        userId = mActivity.getSharedPreferences("userSession", 0).getString("id", "N/A");
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -117,7 +115,7 @@ public class MyNavigationDrawer {
 
                     // Handle logout action
                     case R.id.nav_logout:
-                        mActivity.getSharedPreferences("userSession", 0).edit().clear().apply();
+                        Session.clearSession();
                         // Logout Facebook Account
                         if (LoginManager.getInstance() != null){
                             LoginManager.getInstance().logOut();
@@ -145,10 +143,9 @@ public class MyNavigationDrawer {
     }
 
     public void requestInfoNav() throws JSONException {
-        SharedPreferences session = mActivity.getBaseContext().getSharedPreferences("userSession", 0);
-        String user_name = session.getString("userName", "N/A");
-        String user_email = session.getString("email", "N/A");
-        String profile_image_url = session.getString("profile_picture", "N/A");
+        String user_name = Session.userName;
+        String user_email = Session.email;
+        String profile_image_url = Session.profile_picture;
 
         username.setText(user_name);
         email.setText(user_email);
