@@ -10,6 +10,7 @@ android {
         targetSdkVersion 23
         versionCode 3
         versionName "2.0.0"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -61,4 +62,5 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:4.+'
     compile 'com.google.android.gms:play-services-analytics:8.4.0'
     compile 'com.google.android.gms:play-services:8.4.0'
+    compile 'com.android.support:multidex:1.0.1'
 }

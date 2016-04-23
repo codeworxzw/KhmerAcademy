@@ -8,11 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import org.khmeracademy.AppIntro.AppIntroMain;
+import org.khmeracademy.Util.Session;
 import org.khmeracademy.Util.Utility;
 
 
 public class MainActivity extends AppCompatActivity {
-    SharedPreferences session;
     private Intent i;
 
     @Override
@@ -23,9 +23,8 @@ public class MainActivity extends AppCompatActivity {
         }else{
             Log.i("ooooo", "False");
         }
-       // setContentView(R.layout.activity_main);
-        session = getSharedPreferences("userSession", Context.MODE_PRIVATE);
-        if(session.getBoolean("isLogin",false)){
+
+        if(Session.isLogin){
             i = new Intent(this, MainCategory.class);
         }else{
             i = new Intent(this, AppIntroMain.class);

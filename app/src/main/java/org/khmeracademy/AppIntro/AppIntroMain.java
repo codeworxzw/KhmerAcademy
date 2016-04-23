@@ -14,14 +14,14 @@ import org.khmeracademy.R;
  * Created by sok-ngim on 12/28/15.
  */
 public class AppIntroMain extends AppIntro2 {
-    public static final String MY_PREFS_NAME = "MyPrefsFile";
+    public static final String SETTING = "firstLaunch";
     @Override
     public void init(Bundle savedInstanceState) {
 
-        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, 0);
+        SharedPreferences prefs = getSharedPreferences(SETTING, Context.MODE_PRIVATE);
         if (prefs.getBoolean("APP", false) == true) {
-            Intent intent1 = new Intent(this, RegisterActivity.class);
-            startActivity(intent1);
+            Intent i = new Intent(this, RegisterActivity.class);
+            startActivity(i);
             finish();
         }
 
@@ -36,20 +36,16 @@ public class AppIntroMain extends AppIntro2 {
     }
     private void loadLoginActivity(){
         startApp();
-
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
         finish();
-
     }
 
     public void startApp(){
-        //SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);.edit();
-        SharedPreferences sharedPref = getBaseContext().getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getBaseContext().getSharedPreferences(SETTING, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean("APP", true);
-        editor.commit();
-        //Toast.makeText(getApplicationContext(),"install",Toast.LENGTH_SHORT).show();
+        editor.apply();
     }
 
     @Override

@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bluejamesbond.text.DocumentView;
 import com.bluejamesbond.text.hyphen.SqueezeHyphenator;
@@ -23,6 +24,13 @@ import com.bluejamesbond.text.style.JustifiedSpan;
 import com.bluejamesbond.text.style.TextAlignment;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONException;
 import org.khmeracademy.KhmerFont.ArticleBuilder;
@@ -31,7 +39,7 @@ import org.khmeracademy.R;
 import org.khmeracademy.Util.ChangeLanguage;
 import org.khmeracademy.Util.MyNavigationDrawer;
 
-public class AboutUs extends AppCompatActivity {
+public class AboutUs extends AppCompatActivity implements OnMapReadyCallback {
 
     private TextView textView;
     private Toolbar toolbar;
@@ -40,6 +48,7 @@ public class AboutUs extends AppCompatActivity {
     private TextView title;
     private TextView contact;
     private TextView location;
+    private MapFragment mapFragment;
 
 
     protected int getContentView() {
@@ -106,6 +115,9 @@ public class AboutUs extends AppCompatActivity {
                 new StyleSpan(Typeface.NORMAL), new ForegroundColorSpan(0xFF555555));
 
         addDocumentView(amb, DocumentView.FORMATTED_TEXT);
+
+        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
         // Call Event alert dialog for text view developerName ID
        /* textView = (TextView) findViewById(R.id.developerName);
@@ -174,6 +186,21 @@ public class AboutUs extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         this.recreate();
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        // latitude and longitude
+        double latitude = 11.575677;
+        double longitude = 104.889179;
+
+        // create marker
+        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(getString(R.string.kshrd)).icon(BitmapDescriptorFactory.fromResource(R.drawable.hrd_logo));
+
+        // Add a marker in Sydney, Australia, and move the camera.
+        LatLng kshrd = new LatLng(latitude, longitude);
+        googleMap.addMarker(marker);
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(kshrd, 16));
     }
 }
 
